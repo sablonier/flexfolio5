@@ -1,0 +1,34 @@
+
+{% setcontent settings = "settings" limit 1 returnsingle %}
+<footer class="footer">
+    <div>
+        <div style="border-top: 1px solid black;">
+            <span class="small">© {{ "now"|date("Y") }} {{ settings.footer }}</span>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Assets -->
+    <script src={{ asset('js/jquery-3.3.1.slim.min.js', 'theme') }}></script>
+    <script src={{ asset('js/bootstrap.min.js', 'theme') }}></script>
+    {% if settings.colsxl == 2 %}
+        <script src={{ asset('js/flexfolio_2221.js', 'theme') }}></script>
+    {% elseif settings.colsxl == 3 %}
+        <script src={{ asset('js/flexfolio_3321.js', 'theme') }}></script>
+    {% elseif settings.colsxl == 4 %}
+        <script src={{ asset('js/flexfolio_4321.js', 'theme') }}></script>
+    {% endif %}
+
+    <!--<div id="spinner" class="loading">Loading&#8230;</div>-->
+
+    <!-- Cookie-Alert -->
+    <div class="alert text-center cookiealert" role="alert">
+        Cookies used to ensure you get the best experience.
+        <button type="button" class="button acceptcookies" aria-label="Close">
+            OK
+        </button>
+    </div>
+    <script src="{{ asset('js/cookiealert.js', 'theme') }}"></script>
+
+  </body>
+</html>

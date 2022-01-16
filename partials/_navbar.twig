@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-faded">
+  
+  <!-- Sitename as home button -->
+  {% set homebutton = config.get('general/sitename') %}
+  <div style="white-space: nowrap;">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" style="padding-left: 0;" href="{{ '/' }}">
+          {{ homebutton }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Responsive Toggle -->
+  <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+    class="navbar-toggler navbar-toggler-right" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Menu -->
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    {{ include('partials/_menu.twig') }}
+
+</nav>

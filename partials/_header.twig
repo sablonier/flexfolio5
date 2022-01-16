@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ htmllang() }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Adding title for every page, default bolt style -->
+    <title>
+            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+            {{ config.get('general/sitename') -}}
+            {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css', 'theme') }}">
+    <!-- Fontawesome ALL -->
+    <link rel="stylesheet" href="{{ asset('css/fontawesome5/css/all.min.css', 'theme') }}" rel="stylesheet">
+    <!-- Fonts CSS -->
+    {% setcontent settings = 'settings' limit 1 returnsingle %}
+    {% if settings != "" and settings.font != "" %}
+      <link rel="stylesheet" href="{{ asset('fonts/font-'~settings.font~'.css', 'theme') }}">
+    {% else %}
+      <link rel="stylesheet" href="{{ asset('fonts/font-rubik.css', 'theme') }}">
+    {% endif %}
+    <!-- Flexcards CSS -->
+    <link rel="stylesheet" href="{{ asset('css/flexcards.css', 'theme') }}">
+    <!-- Cookie alert -->
+    <link rel="stylesheet" href="{{ asset('css/cookiealert.css', 'theme') }}">
+    <!-- Font size -->
+    {% if settings != "" and settings.fontsize != "" %}
+    {% set remsize = settings.fontsize/16 %}
+    <style>
+      body {
+        font-size: {{ remsize|replace(',','.') }}rem;
+        line-height: {{ settings.lineheight|replace(',','.') }}rem;
+      }
+    </style>
+    {% endif %}
+  </head>
+
+
+

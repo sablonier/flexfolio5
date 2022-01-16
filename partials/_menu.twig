@@ -1,0 +1,35 @@
+<ul class="navbar-nav mr-auto">
+
+    {# Generates all menu entries from available pages #}
+    {% setcontent pages = 'pages' where { displaymenu: true } %}
+    {% for item in pages %}
+    <li class="nav-item {% if page.link == item.link and item.link != '/' %}active{% endif %}">
+        <a class="nav-link" href="{{ item.link }}">{{ item.title }}</a>
+    </li>
+    {% endfor %}
+
+
+    <ul class="navbar-nav mr-auto">
+        {% for locale in locales|default([]) %}
+        <li {% if locale.get('active') %} class="nav-item active" style="display: none;" {% else %} class="nav-item" {%
+            endif %}>
+            <a class="nav-link" style="color: red" title="{{ locale.get('label') }}" href="{{ locale.get('url') }}">
+                {{ locale.get('label') }}
+            </a>
+            {% endfor %}
+    </ul>
+    {% setcontent settings = 'settings' limit 1 returnsingle %}
+    {% if settings.socialmedia != "" %}
+    <ul>
+        {% for item in settings.socialmedia %}
+            <a href="{{item.links}}">
+                {% if item.symbol %}
+                    <div class="nav-link"><i class="{{ item.symbolcode }}" aria-hidden="true"></i></div>
+                {% else %}
+                    <div class="nav-link">{{item.title}}</div>
+                {% endif %}
+            </a>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</ul>

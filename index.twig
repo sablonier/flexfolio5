@@ -1,0 +1,99 @@
+{% include 'partials/_header.twig' %}
+    <body>
+{% include 'partials/_navbar.twig' %}
+    
+    {# fetching content #}
+    {# ---------------- #}
+
+    {# for bolt market distro only, check contenttypes #}
+    {% if config.get('contenttypes').settings is empty %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Please provide Flexfolio Theme contenttypes. Have a look in /theme/flexfolio/config-examples/contenttypes.example.yml
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+    {% endif %}
+
+    {% setcontent settings = 'settings' limit 1 returnsingle %}
+    {% set homeset = 'works/'~settings.homesort~'/'~settings.homecount  %}
+    {% setcontent cards = homeset where { displayhome: true } %}
+
+    
+    {# getting the magic with rows and columns            #}
+    {# i.e. 10 entries should give = 3/3/2/2 not 3/3/3/1  #}
+    {# -------------------------------------------------- #}
+    {% if settings.colsxl > 0 %}
+        {% set rows = settings.colsxl %}
+    {% else %}
+        {% set rows = 4 %}
+    {% endif %}
+
+    {% set l = cards|length %}
+    {% set d = cards|length // rows %}
+    {% set r1 = cards|length % rows %}
+
+    {% set arr = [] %}
+
+    {% set magicloop = rows-1 %}
+
+    {% if r1 != 0 %}
+        {% for key in 0..magicloop %}
+            {% set last = last + arr[key-1][1] %}
+            {% if loop.index <= r1 %}
+                {% set arr = arr|merge([ [last, d+1] ]) %}
+                {% set r1 = r1-1 %}
+            {% else %}
+                {% set arr = arr|merge([ [last, d+r1] ]) %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% for key in 0..magicloop %}
+            {% set last = last + arr[key-1][1] %}
+            {% set arr = arr|merge([ [last, d] ]) %}
+            {% set r1 = r1-1 %}
+        {% endfor %}
+    {% endif %}
+
+    {# dump(arr) #}
+    {% set magic = arr %}
+    
+    {# container #}
+    {# --------- #}
+    <div class="container-fluid">
+        <div class="row">
+                {# for bolt market distro only, check if translate extension present #}
+                {% if locales is empty %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Translate Extension Missing! Please install <a href="https://bolttranslate.github.io/Translate/installation.html"
+                            class="alert-link">translate extension.</a>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% else %}
+                {# get columns #}
+                {% if settings.colsxl == 4 %}
+                        {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-3' %}
+                    {% elseif settings.colsxl == 3 %}
+                        {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-4' %}
+                    {% elseif settings.colsxl == 2 %}
+                        {% set colclass = 'col-sm-12 col-md-6 col-lg-6 col-xl-6' %}
+                {% endif %}
+                {% for key in magic|keys %}
+                    <div id="column-{{key}}" class="{{colclass}}">
+                    {# push rows in columns #}
+                    {% for card in cards|slice(magic[key][0],magic[key][1]) %}
+                            {% include 'partials/_card_index.twig' %}
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+        {% endif %}
+        </div> 
+    </div>
+</div>
+
+<!--<div id="scrolldown"><span class="icon-down-open"></span></div> -->
+
+<div onclick="topFunction();" id="scrollup"><span class="icon-up-open"></span></div>
+{% include 'partials/_footer.twig' %}

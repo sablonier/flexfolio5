@@ -1,0 +1,17 @@
+{% set info = { 'height': imageinfo(resimage).height, 
+                'width': imageinfo(resimage).width } %}
+{% set sizes = [ '320', '384', '480', '576', '640', '768', '800','960', '1024', '1280', '1440' ] %}
+{% if imageinfo(resimage).mime == "image/gif" %}
+    <img src="files/{{ resimage }}" width="100%" height="100%">
+{% else %}
+<img srcset="
+    {% for size in sizes %}
+        {% set relheight = info.height*size/info.width %}
+        {{ resimage|thumbnail(size, relheight, 'r') }} {{size}}w{% if not loop.last %},{% endif %}
+    {% endfor %}"
+sizes=" (min-width: 1200px) 25vw,
+        (min-width: 1024px) 33.3vw,
+        (min-width: 768px) 50vw,
+        100vw"
+width="100%">
+{% endif %}
