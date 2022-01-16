@@ -170,57 +170,70 @@ works:
             group: vorschau
         gallery:
             label: Galerie
-            type: block
+            type: collection
             group: galerie
             collapsible: true
             localize: true
             fields:
                 imageelement:
+                    type: set
                     label: Bild
                     fields:
                         imgtitle:
                             label: Titel
                             type: text
+                            localize: true
                         imgimage:
                             label: Bild
                             type: image
                             extensions: [ gif, jpg, png ]
+                            localize: true
                         imgcaption:
                             label: Legende
                             type: textarea
                             height: 50px
+                            localize: true
                 videoelement:
+                    type: set
                     label: Video
                     fields:
                         vidtitle:
                             label: Titel
                             type: text
+                            localize: true
                         vidvideo:
                             label: Video
                             type: file
                             extensions: [ mp4 ]
+                            localize: true
                         vidcaption:
                             label: Legende
                             type: textarea
                             height: 50px
+                            localize: true
                 documentelement:
+                    type: set
                     label: Dokument
                     fields:
                         doctitle:
                             label: Titel
                             type: text
+                            localize: true
                         docpreview:
                             label: Dokument Vorschaubild
                             type: image
                             extensions: [ gif, jpg, png ]
+                            localize: true
                         docfile:
                             label: Dokument
                             type: file
                             extensions: [ pdf, zip ]
+                            localize: true
                         doccaption:
                             label: Legende
                             type: textarea
                             height: 50px
+                            localize: true
         template:
             type: templateselect
             filter: 'record*.twig'
