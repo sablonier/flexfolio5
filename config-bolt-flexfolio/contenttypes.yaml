@@ -6,8 +6,8 @@
 
 
 settings:
-    name: settings
-    singular_name: setting
+    name: Settings
+    singular_name: Setting
     locales: ['de', 'en', 'fr', 'it']
     fields:
         font:
@@ -64,23 +64,26 @@ settings:
             default: all-mine.org --- Change footer in settings.
         socialmedia:
             label: Social Media
-            type: repeater
+            type: collection
             group: Einstellungen
             collapsible: true
             fields:
-                title:
-                    label: Name
-                    type: text
-                links:
-                    label: Link
-                    type: text
-                symbol:
-                    label: Symbol
-                    type: checkbox
-                symbolcode:
-                    label: Font Awesome Code
-                    type: text
-                    placeholder: fab fa-instagram
+                media:
+                    type: set
+                    fields:
+                        title:
+                            label: Name
+                            type: text
+                        links:
+                            label: Link
+                            type: text
+                        symbol:
+                            label: Symbol
+                            type: checkbox
+                        symbolcode:
+                            label: Font Awesome Code
+                            type: text
+                            placeholder: fab fa-instagram
     viewless: true
     singleton: true
     default_status: published
@@ -89,8 +92,8 @@ settings:
     icon_one: "fa:cog"
 
 pages:
-    name: pages
-    singular_name: page
+    name: Pages
+    singular_name: Page
     locales: ['de', 'en', 'fr', 'it']
     fields:
         displaymenu:
@@ -124,12 +127,12 @@ pages:
     record_template: page.twig
     recordsperpage: 10
     default_status: published
-    icon_many: "fa:file-text-o"
-    icon_one: "fa:file-text-o"
+    icon_many: "fa:columns"
+    icon_one: "fa:columns"
 
 works:
-    name: works
-    singular_name: work
+    name: Works
+    singular_name: Work
     locales: ['de', 'en', 'fr', 'it']
     fields:
         displayhome:
@@ -231,8 +234,8 @@ works:
     taxonomy: [ worksort ]
     record_template: record.twig
     recordsperpage: 10
-    icon_many: "fa:file-text-o"
-    icon_one: "fa:file-text-o"
+    icon_many: "fa:photo-video"
+    icon_one: "fa:photo-video"
 
 
 # Possible field types:
