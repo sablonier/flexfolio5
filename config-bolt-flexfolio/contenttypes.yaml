@@ -60,14 +60,13 @@ settings:
             label: Fusszeile
             type: html
             group: Einstellungen
-            translatable: true
+            localize: true
             default: all-mine.org --- Change footer in settings.
         socialmedia:
             label: Social Media
             type: repeater
             group: Einstellungen
             collapsible: true
-            translatable: true
             fields:
                 title:
                     label: Name
@@ -104,18 +103,19 @@ pages:
             type: text
             class: large
             group: inhalt
-            translatable: true
+            localize: true
         slug:
             label: Link
             type: slug
             uses: title
             group: inhalt
+            localize: true
         body:
             label: Text
             type: html
             height: 300px
             group: inhalt
-            translatable: true
+            localize: true
         template:
             type: templateselect
             filter: 'page*.twig'
@@ -127,7 +127,7 @@ pages:
     icon_many: "fa:file-text-o"
     icon_one: "fa:file-text-o"
 
-work:
+works:
     name: works
     singular_name: work
     locales: ['de', 'en', 'fr', 'it']
@@ -142,34 +142,35 @@ work:
             type: text
             class: large
             group: inhalt
-            translatable: true
+            localize: true
         slug:
             label: Link
             type: slug
             uses: title
+            localize: true
         description:
             label: Beschreibung
             type: html
             height: 300px
             group: inhalt
-            translatable: true
+            localize: true
         previewimage:
             label: Vorschau Bild
             type: image
             extensions: [ gif, jpg, png ]
-            translatable: true
+            localize: true
             group: vorschau
         previewtext:
             label: Vorschau Text
             type: html
-            translatable: true
+            localize: true
             group: vorschau
         gallery:
             label: Galerie
             type: block
             group: galerie
             collapsible: true
-            translatable: true
+            localize: true
             fields:
                 imageelement:
                     label: Bild
