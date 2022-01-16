@@ -1,0 +1,382 @@
+# This file defines the content types on the website. See the documentation for
+# details: https://docs.bolt.cm/contenttypes/intro
+
+# This file defines the contenttypes on the website. See the documentation for
+# details: https://docs.bolt.cm/contenttypes/intro
+
+
+settings:
+    name: settings
+    singular_name: setting
+    fields:
+        locale:
+            type: locale
+            group: Einstellungen
+        font:
+            type: select
+            values: [ rubik, crimson, elaine, avrile ]
+            default: 'rubik'
+            group: Einstellungen
+        fontsize:
+            label: Basis Schriftgrösse
+            type: number
+            mode: integer
+            default: 16
+            group: Einstellungen
+        lineheight:
+            label: Zeilenabstand
+            type: number
+            mode: float
+            default: 1.25
+            group: Einstellungen
+        colsxl:
+            label: Anzahl Spalten Large/XL
+            type: number
+            mode: integer
+            default: 4
+            min: 2
+            max: 4
+            group: Einstellungen
+        colsmobile:
+            label: Anzahl Spalten Mobile
+            tyoe: number
+            mode: integer
+            default: 1
+            min: 1
+            max: 2
+            group: Einstellungen
+        homesort:
+            label: Sortierung auf der Startseite (Zufall oder nach Datum)
+            enlabel: Sort
+            type: select
+            values: [ random, latest ]
+            default: 'random'
+            group: Einstellungen
+        homecount:
+            label: Anzahl Objekte auf der Startseite
+            tyoe: number
+            mode: integer
+            default: 8
+            group: Einstellungen
+        footer:
+            label: Fusszeile
+            type: html
+            group: Einstellungen
+            translatable: true
+            default: all-mine.org --- Change footer in settings.
+        socialmedia:
+            label: Social Media
+            type: repeater
+            group: Einstellungen
+            collapsible: true
+            translatable: true
+            fields:
+                title:
+                    label: Name
+                    type: text
+                links:
+                    label: Link
+                    type: text
+                symbol:
+                    label: Symbol
+                    type: checkbox
+                symbolcode:
+                    label: Font Awesome Code
+                    type: text
+                    placeholder: fab fa-instagram
+        dedata:
+            type: hidden
+        deslug:
+            type: locale_data
+            index: true
+        endata:
+            type: hidden
+        enslug:
+            type: locale_data
+            index: true
+        frdata:
+            type: hidden
+        frslug:
+            type: locale_data
+            index: true
+        itdata:
+            type: hidden
+        itslug:
+            type: locale_data
+            index: true
+    viewless: true
+    singleton: true
+    default_status: published
+    sort: -id
+    icon_many: "fa:cogs"
+    icon_one: "fa:cog"
+
+pages:
+    name: pages
+    singular_name: page
+    fields:
+        locale:
+            type: locale
+            group: inhalt
+        displaymenu:
+            label: Seite als Menü-Eintrag
+            type: checkbox
+            default: true
+            group: inhalt
+        title:
+            label: Titel
+            type: text
+            class: large
+            group: inhalt
+            translatable: true
+        slug:
+            label: Link
+            type: slug
+            uses: title
+            group: inhalt
+        body:
+            label: Text
+            type: html
+            height: 300px
+            group: inhalt
+            translatable: true
+        dedata:
+            type: hidden
+        deslug:
+            type: locale_data
+            index: true
+        endata:
+            type: hidden
+        enslug:
+            type: locale_data
+            index: true
+        frdata:
+            type: hidden
+        frslug:
+            type: locale_data
+            index: true
+        itdata:
+            type: hidden
+        itslug:
+            type: locale_data
+            index: true
+        template:
+            type: templateselect
+            filter: 'page*.twig'
+            group: template
+    taxonomy: [ pagesort ]
+    record_template: page.twig
+    recordsperpage: 10
+    default_status: published
+    icon_many: "fa:file-text-o"
+    icon_one: "fa:file-text-o"
+
+work:
+    name: works
+    singular_name: work
+    fields:
+        locale:
+            type: locale
+            group: inhalt
+        displayhome:
+            label: Zeige auf Startseite
+            type: checkbox
+            default: true
+            group: inhalt
+        title:
+            label: Titel
+            type: text
+            class: large
+            group: inhalt
+            translatable: true
+        slug:
+            label: Link
+            type: slug
+            uses: title
+        description:
+            label: Beschreibung
+            type: html
+            height: 300px
+            group: inhalt
+            translatable: true
+        previewimage:
+            label: Vorschau Bild
+            type: image
+            extensions: [ gif, jpg, png ]
+            translatable: true
+            group: vorschau
+        previewtext:
+            label: Vorschau Text
+            type: html
+            translatable: true
+            group: vorschau
+        gallery:
+            label: Galerie
+            type: block
+            group: galerie
+            collapsible: true
+            translatable: true
+            fields:
+                imageelement:
+                    label: Bild
+                    fields:
+                        imgtitle:
+                            label: Titel
+                            type: text
+                        imgimage:
+                            label: Bild
+                            type: image
+                            extensions: [ gif, jpg, png ]
+                        imgcaption:
+                            label: Legende
+                            type: textarea
+                            height: 50px
+                videoelement:
+                    label: Video
+                    fields:
+                        vidtitle:
+                            label: Titel
+                            type: text
+                        vidvideo:
+                            label: Video
+                            type: file
+                            extensions: [ mp4 ]
+                        vidcaption:
+                            label: Legende
+                            type: textarea
+                            height: 50px
+                documentelement:
+                    label: Dokument
+                    fields:
+                        doctitle:
+                            label: Titel
+                            type: text
+                        docpreview:
+                            label: Dokument Vorschaubild
+                            type: image
+                            extensions: [ gif, jpg, png ]
+                        docfile:
+                            label: Dokument
+                            type: file
+                            extensions: [ pdf, zip ]
+                        doccaption:
+                            label: Legende
+                            type: textarea
+                            height: 50px
+        dedata:
+            type: hidden
+        deslug:
+            type: locale_data
+            index: true
+        endata:
+            type: hidden
+        enslug:
+            type: locale_data
+            index: true
+        frdata:
+            type: hidden
+        frslug:
+            type: locale_data
+            index: true
+        itdata:
+            type: hidden
+        itslug:
+            type: locale_data
+            index: true
+        template:
+            type: templateselect
+            filter: 'record*.twig'
+            group: template
+    relations:
+        pages:
+            multiple: false
+            label: Wähle eine Seite
+            order: -datepublish
+    default_status: published
+    taxonomy: [ worksort ]
+    record_template: record.twig
+    recordsperpage: 10
+    icon_many: "fa:file-text-o"
+    icon_one: "fa:file-text-o"
+
+
+# Possible field types:
+#
+# text - varchar(256) - input type text.
+# number - double - Input field for numbers, with `mode: integer` or `mode: float`
+# imagelist - text (65kb) - Input type for imagelists. Add multiple images. Useful for image sliders, galleries, etcetera.
+# image - varchar(256) - image select/upload widget, stored as filename.
+# file - varchar(256) - file select/upload widget, stored as filename.
+# filelist - text (65kb) - Input type for a list of files. Including a description.
+# embed - text (65kb) - embed widget for video and audio. Stored as JSON.
+# html - text (65kb) - wysiwyg element.
+# textarea - varchar(32768) - Simple, plain < textarea > field.
+# markdown - varchar(32768) - wysiwyg element, which is parsed as Markdown text.
+# date - datetime - date selector widget, with `mode: date` or `mode: datetime`
+# email - text(65kb) - Input type for email.
+# select - varchar(256) - select with predefined values
+# templateselect - varchar(256) - select with template filenames
+# checkbox - integer - checkbox-field which is 1 (checked) or 0 (unchecked)
+# set - text (65kb) - Input type for sests. Group fields semantically into a combined set field.
+# collection - text (65kb) - Input type for collections. Add multiple fields of different types. Useful for lists.
+# data - text (65kb) - Read-only field, useful for storing (raw) data provided by an external source.
+# hidden - text (65kb) - Regular text field, except it is hidden from the content editor.
+# slug - text(65kb) - The slug for the record. Use with option `uses: [ title ]` to generate based on a title field.
+
+# Using YAML repeated nodes
+#
+# YAML allows the defining of "repeated nodes". These allow you to define a 'node'
+# with a 'key: &name' and referenced later with '<<: *name'
+#
+# Bolt allows you to define this with the special entry of '__nodes:' that itself
+# won't create a ContentType, but will allow you to use it in actual ContentTypes
+# to prevent repeating yourself.
+#
+# To achieve this, first create a key '__nodes:' and place it before your other contenttypes:
+#__nodes:
+#    field_defaults: &field_defaults
+#        title:
+#            type: text
+#            class: large
+#            group: main
+#        slug:
+#            type: slug
+#            uses: title
+#    template_defaults: &template_defaults
+#        template:
+#            type: templateselect
+#            filter: '*.twig'
+#            group: meta
+#
+# Then, as an example, you could create a ContentType with default fields, with
+# an additional 'image' field.
+#
+#contenttypeabc:
+#    name: ContentType Abc
+#    slug: contenttypeabc
+#    fields:
+#        <<: *field_defaults
+#        image:
+#            type: image
+#            attrib: title
+#            extensions: [ gif, jpg, png ]
+#        <<: *template_defaults
+#    taxonomy: [ chapters ]
+#    records_per_page: 10
+#
+# Alternatively, or additionally, you then can then create a ContentType with
+# default fields, and a 'select' field, and a different 'templateselect' option.
+#
+#contenttypexyz:
+#    name: ContentType Xyz
+#    slug: contenttypexyz
+#    fields:
+#        <<: *field_defaults
+#        selectfield:
+#            type: select
+#            values: [ none, foo, bar ]
+#        template:
+#            type: templateselect
+#            filter: '*_xyz.twig'
+#    taxonomy: [ tags ]
+#    records_per_page: 20

@@ -1,0 +1,13 @@
+// Toggle global options
+// $enable-gradients: true;
+// $enable-shadows: true;
+
+// Customize some defaults
+// $body-color: #fff;
+
+$body-bg: #333;
+
+// Import all (without functions)
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// or import what you need from bootstrap
