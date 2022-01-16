@@ -8,10 +8,8 @@
 settings:
     name: settings
     singular_name: setting
+    locales: ['de', 'en', 'fr', 'it']
     fields:
-        locale:
-            type: locale
-            group: Einstellungen
         font:
             type: select
             values: [ rubik, crimson, elaine, avrile ]
@@ -84,26 +82,6 @@ settings:
                     label: Font Awesome Code
                     type: text
                     placeholder: fab fa-instagram
-        dedata:
-            type: hidden
-        deslug:
-            type: locale_data
-            index: true
-        endata:
-            type: hidden
-        enslug:
-            type: locale_data
-            index: true
-        frdata:
-            type: hidden
-        frslug:
-            type: locale_data
-            index: true
-        itdata:
-            type: hidden
-        itslug:
-            type: locale_data
-            index: true
     viewless: true
     singleton: true
     default_status: published
@@ -114,10 +92,8 @@ settings:
 pages:
     name: pages
     singular_name: page
+    locales: ['de', 'en', 'fr', 'it']
     fields:
-        locale:
-            type: locale
-            group: inhalt
         displaymenu:
             label: Seite als Menü-Eintrag
             type: checkbox
@@ -140,26 +116,6 @@ pages:
             height: 300px
             group: inhalt
             translatable: true
-        dedata:
-            type: hidden
-        deslug:
-            type: locale_data
-            index: true
-        endata:
-            type: hidden
-        enslug:
-            type: locale_data
-            index: true
-        frdata:
-            type: hidden
-        frslug:
-            type: locale_data
-            index: true
-        itdata:
-            type: hidden
-        itslug:
-            type: locale_data
-            index: true
         template:
             type: templateselect
             filter: 'page*.twig'
@@ -174,10 +130,8 @@ pages:
 work:
     name: works
     singular_name: work
+    locales: ['de', 'en', 'fr', 'it']
     fields:
-        locale:
-            type: locale
-            group: inhalt
         displayhome:
             label: Zeige auf Startseite
             type: checkbox
@@ -263,26 +217,6 @@ work:
                             label: Legende
                             type: textarea
                             height: 50px
-        dedata:
-            type: hidden
-        deslug:
-            type: locale_data
-            index: true
-        endata:
-            type: hidden
-        enslug:
-            type: locale_data
-            index: true
-        frdata:
-            type: hidden
-        frslug:
-            type: locale_data
-            index: true
-        itdata:
-            type: hidden
-        itslug:
-            type: locale_data
-            index: true
         template:
             type: templateselect
             filter: 'record*.twig'
