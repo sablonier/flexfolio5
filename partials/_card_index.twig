@@ -1,8 +1,9 @@
-<div class="card" id="{{card.id}}" fixedposition="{{ card.position }}">
+<div class="card" id="{{card.id}}">
     <div class="card-block">
         <a href="{{ card.link }}">
             <div>
-            {% if card.previewimage != "" %}
+            {{ dump(card.id) }}
+            {# if card.previewimage != "" %}
                 {% set resimage = card.previewimage %}
                 {% if settings.colsxl >= 3 %}
                     {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 'resimage' : resimage } %}
@@ -10,11 +11,11 @@
                     {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
                 {% endif %}
             {% endif %}
-            {{ card.previewtext }}
+            {{ card.previewtext #}
             </div>
         </a>
         <div class="card-text small">
-                <a href="{{ card.related()[0].link }}">{{ card.related()[0].title }}</a> / <a href="{{ card.link }}">{{ card.title }}</a>
+                <a href="{{ card|related()[0].link }}">{{ card|related()[0].title }}</a> / <a href="{{ card.link }}">{{ card.title }}</a>
         </div>
     </div>
 </div>

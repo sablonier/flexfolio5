@@ -16,9 +16,8 @@
     {% endif %}
 
     {% setcontent settings = 'settings' limit 1 returnsingle %}
-    {% set homeset = 'works/'~settings.homesort~'/'~settings.homecount  %}
-    {% setcontent cards = homeset where { displayhome: true } %}
-
+    {# set homeset = 'works' settings.homesort settings.homecount where { displayhome: true } #}
+    {% setcontent cards = 'works' orderby 'id' %}
     
     {# getting the magic with rows and columns            #}
     {# i.e. 10 entries should give = 3/3/2/2 not 3/3/3/1  #}
@@ -29,17 +28,21 @@
         {% set rows = 4 %}
     {% endif %}
 
-    {% set l = cards|length %}
-    {% set d = cards|length // rows %}
-    {% set r1 = cards|length % rows %}
+    {% set l = cards|length %} {# how many cards? #}
+    {% set d = cards|length // rows %} {# cards / rows #}
+    {% set r1 = cards|length % rows %} {# remaining cards #}
 
     {% set arr = [] %}
+    {% set last = 0 %}
+    
 
     {% set magicloop = rows-1 %}
 
     {% if r1 != 0 %}
         {% for key in 0..magicloop %}
-            {% set last = last + arr[key-1][1] %}
+            {% if key > 0 %}
+                {% set last = last + arr[key-1][1] %}
+            {% endif %}
             {% if loop.index <= r1 %}
                 {% set arr = arr|merge([ [last, d+1] ]) %}
                 {% set r1 = r1-1 %}
@@ -49,29 +52,20 @@
         {% endfor %}
     {% else %}
         {% for key in 0..magicloop %}
-            {% set last = last + arr[key-1][1] %}
+            {% if key > 0 %}
+                {% set last = last + arr[key-1][1] %}
+            {% endif %}
             {% set arr = arr|merge([ [last, d] ]) %}
             {% set r1 = r1-1 %}
         {% endfor %}
     {% endif %}
 
-    {# dump(arr) #}
     {% set magic = arr %}
     
     {# container #}
     {# --------- #}
     <div class="container-fluid">
         <div class="row">
-                {# for bolt market distro only, check if translate extension present #}
-                {% if locales is empty %}
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Translate Extension Missing! Please install <a href="https://bolttranslate.github.io/Translate/installation.html"
-                            class="alert-link">translate extension.</a>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                {% else %}
                 {# get columns #}
                 {% if settings.colsxl == 4 %}
                         {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-3' %}
@@ -84,11 +78,11 @@
                     <div id="column-{{key}}" class="{{colclass}}">
                     {# push rows in columns #}
                     {% for card in cards|slice(magic[key][0],magic[key][1]) %}
+                            {# dump(card) #}
                             {% include 'partials/_card_index.twig' %}
                     {% endfor %}
                     </div>
                 {% endfor %}
-        {% endif %}
         </div> 
     </div>
 </div>

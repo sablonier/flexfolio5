@@ -1,14 +1,10 @@
-# This file defines the content types on the website. See the documentation for
-# details: https://docs.bolt.cm/contenttypes/intro
-
-# This file defines the contenttypes on the website. See the documentation for
-# details: https://docs.bolt.cm/contenttypes/intro
-
+# https://docs.bolt.io
 
 settings:
     name: Settings
     singular_name: Setting
     locales: ['de', 'en', 'fr', 'it']
+    default_locale: 'de'
     fields:
         font:
             type: select
@@ -95,6 +91,7 @@ pages:
     name: Pages
     singular_name: Page
     locales: ['de', 'en', 'fr', 'it']
+    default_locale: 'de'
     fields:
         displaymenu:
             label: Seite als Menü-Eintrag
@@ -134,6 +131,7 @@ works:
     name: Works
     singular_name: Work
     locales: ['de', 'en', 'fr', 'it']
+    default_locale: 'de'
     fields:
         displayhome:
             label: Zeige auf Startseite

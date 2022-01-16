@@ -31,8 +31,8 @@
     {% set remsize = settings.fontsize/16 %}
     <style>
       body {
-        font-size: {{ remsize|replace(',','.') }}rem;
-        line-height: {{ settings.lineheight|replace(',','.') }}rem;
+        font-size: {{ remsize|replace({',':'.'}) }}rem;
+        line-height: {{ settings.lineheight|replace({',':'.'}) }}rem;
       }
     </style>
     {% endif %}
