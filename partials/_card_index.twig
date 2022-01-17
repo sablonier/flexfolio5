@@ -2,7 +2,7 @@
     <div class="card-block">
         <a href="{{ card.link }}">
             <div>
-            {# if card.previewimage != "" %}
+            {% if card.previewimage|media != null %}
                 {% set resimage = card.previewimage %}
                 {% if settings.colsxl >= 3 %}
                     {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 'resimage' : resimage } %}
@@ -10,7 +10,7 @@
                     {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
                 {% endif %}
             {% endif %}
-            {{ card.previewtext #}
+            {{ card.previewtext }}
             </div>
         </a>
         <div class="card-text small">
