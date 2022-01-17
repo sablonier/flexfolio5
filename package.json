@@ -11,7 +11,7 @@
     "src/js/flexfolio_4321.js"
   ],
   "scripts": {
-    "watch": "parcel ./src/flexfolio.html",
+    "watch": "parcel watch --no-content-hash --no-source-maps --dist-dir dist",
     "build": "parcel build --no-content-hash --no-source-maps --dist-dir dist --no-cache && cp -R ./src/favicon ./dist/favicon"
   },
   "keywords": [],

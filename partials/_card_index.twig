@@ -1,20 +1,20 @@
 <div class="card" id="{{card.id}}">
     <div class="card-block">
-        <a href="{{ card.link }}">
-            <div>
-            {% if card.previewimage|media != null %}
-                {% set resimage = card.previewimage %}
-                {% if settings.colsxl >= 3 %}
-                    {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 'resimage' : resimage } %}
-                {% else %}
-                    {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
-                {% endif %}
+        <div>
+        {% if card.previewimage|media != null %}
+            <a href="{{ card|link }}">
+            {% set resimage = card.previewimage %}
+            {% if settings.colsxl >= 3 %}
+                {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 'resimage' : resimage } %}
+            {% else %}
+                {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
             {% endif %}
-            {{ card.previewtext }}
-            </div>
-        </a>
+            </a>
+        {% endif %}
+        {{ card.previewtext }}
+        </div>
         <div class="card-text small">
-                <a href="{{ card|related()[0].link }}">{{ card|related()[0].title }}</a> / <a href="{{ card.link }}">{{ card.title }}</a>
+            <a href="{{ card|link }}">{{ card.title }}</a>
         </div>
     </div>
 </div>

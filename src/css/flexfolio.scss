@@ -4,10 +4,18 @@
 // $enable-gradients: true;
 // $enable-shadows: true;
 
-// Customize some defaults
+// Customize some defaults, i.e.
 // $body-color: #fff;
+// $body-bg: #333;
 
-$body-bg: #333;
+
+$navbar-light-color: #111;
+
+$link-color: #111;
+$link-decoration: underline;
+
+$enable-rounded: false;
+$border-width: 0;
 
 // Import all (without functions)
 @import "../../node_modules/bootstrap/scss/bootstrap";

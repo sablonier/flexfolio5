@@ -1,12 +1,13 @@
 
     {% setcontent settings = "settings" limit 1 returnsingle %}
-    <footer class="footer">
+    <footer class="container-fluid">
         <div>
             <div style="border-top: 1px solid black;">
                 <span class="small">© {{ "now"|date("Y")~" "~settings.footer|striptags('<a>') }}</span>
             </div>
         </div>
     </footer>
+    </main>
     
     <!-- Assets -->
     <script src={{ asset('dist/js/flexfolio.js', 'theme') }}></script>
