@@ -5,7 +5,10 @@
   "source": [
     "src/css/flexfolio.scss",
     "src/css/fonts/rubik.scss",
-    "src/js/flexfolio.js"
+    "src/js/flexfolio.js",
+    "src/js/flexfolio_2221.js",
+    "src/js/flexfolio_3321.js",
+    "src/js/flexfolio_4321.js"
   ],
   "scripts": {
     "watch": "parcel ./src/flexfolio.html",

@@ -15,7 +15,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dist/favicon/favicon-32x32.ico', 'theme') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('dist/favicon/favicon-96x96.png', 'theme') }}">
     <meta name="msapplication-square310x310logo" content="{{ asset('dist/favicon/mstile-310x310.png', 'theme') }}">
-    <meta name="msapplication-TileColor" content="[#000000]">
 
     <!-- Flexfolio CSS -->
     <link rel="stylesheet" href="{{ asset('dist/css/flexfolio.css', 'theme') }}">
@@ -33,6 +32,7 @@
     {% set remsize = settings.fontsize/16 %}
     <style>
       body {
+        font-family: '{{settings.font}}';
         font-size: {{ remsize|replace({',':'.'}) }}rem;
         line-height: {{ settings.lineheight|replace({',':'.'}) }}rem;
       }

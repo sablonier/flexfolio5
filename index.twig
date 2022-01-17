@@ -67,7 +67,6 @@
                     <div id="column-{{key}}" class="{{colclass}}">
                     {# push rows in columns #}
                     {% for card in cards|slice(magic[key][0],magic[key][1]) %}
-                            {# dump(card) #}
                             {% include 'partials/_card_index.twig' %}
                     {% endfor %}
                     </div>
@@ -77,4 +76,5 @@
 </div>
 
 <div onclick="topFunction();" id="scrollup"><span class="icon-up-open"></span></div>
+
 {% include 'partials/_footer.twig' %}

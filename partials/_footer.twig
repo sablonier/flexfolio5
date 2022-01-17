@@ -10,22 +10,13 @@
     
     <!-- Assets -->
     <script src={{ asset('dist/js/flexfolio.js', 'theme') }}></script>
-    {# if settings.colsxl == 2 %}
-        <script src={{ asset('js/flexfolio_2221.js', 'theme') }}></script>
+    {% if settings.colsxl == 2 %}
+        <script src={{ asset('dist/js/flexfolio_2221.js', 'theme') }}></script>
     {% elseif settings.colsxl == 3 %}
-        <script src={{ asset('js/flexfolio_3321.js', 'theme') }}></script>
+        <script src={{ asset('dist/js/flexfolio_3321.js', 'theme') }}></script>
     {% elseif settings.colsxl == 4 %}
-        <script src={{ asset('js/flexfolio_4321.js', 'theme') }}></script>
-    {% endif #}
+        <script src={{ asset('dist/js/flexfolio_4321.js', 'theme') }}></script>
+    {% endif %}
 
-    <!--<div id="spinner" class="loading">Loading&#8230;</div>-->
-
-    <!-- Cookie-Alert -->
-    <!--div class="alert text-center cookiealert" role="alert">
-        Cookies used to ensure you get the best experience.
-        <button type="button" class="button acceptcookies" aria-label="Close">
-            OK
-        </button>
-    </div>-->
   </body>
 </html>
