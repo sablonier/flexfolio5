@@ -5,16 +5,6 @@
     {# fetching content #}
     {# ---------------- #}
 
-    {# for bolt market distro only, check contenttypes #}
-    {% if config.get('contenttypes').settings is empty %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                Please provide Flexfolio Theme contenttypes. Have a look in /theme/flexfolio/config-examples/contenttypes.example.yml
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-        </div>
-    {% endif %}
-
     {% setcontent settings = 'settings' limit 1 returnsingle %}
     {# set homeset = 'works' settings.homesort settings.homecount where { displayhome: true } #}
     {% setcontent cards = 'works' orderby 'id' %}
@@ -35,7 +25,6 @@
     {% set arr = [] %}
     {% set last = 0 %}
     
-
     {% set magicloop = rows-1 %}
 
     {% if r1 != 0 %}
@@ -86,8 +75,6 @@
         </div> 
     </div>
 </div>
-
-<!--<div id="scrolldown"><span class="icon-down-open"></span></div> -->
 
 <div onclick="topFunction();" id="scrollup"><span class="icon-up-open"></span></div>
 {% include 'partials/_footer.twig' %}

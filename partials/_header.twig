@@ -10,22 +10,24 @@
             {{ config.get('general/sitename') -}}
             {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
     </title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/favicon/apple-touch-icon-180x180.png', 'theme') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dist/favicon/favicon-32x32.ico', 'theme') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('dist/favicon/favicon-96x96.png', 'theme') }}">
+    <meta name="msapplication-square310x310logo" content="{{ asset('dist/favicon/mstile-310x310.png', 'theme') }}">
+    <meta name="msapplication-TileColor" content="[#000000]">
 
     <!-- Flexfolio CSS -->
-    <link rel="stylesheet" href="{{ asset('dist/flexfolio.ada04524.css', 'theme') }}">
-    <!-- Fontawesome ALL -->
-    <!-- link rel="stylesheet" href="{{ asset('css/fontawesome5/css/all.min.css', 'theme') }}" rel="stylesheet">-->
+    <link rel="stylesheet" href="{{ asset('dist/css/flexfolio.css', 'theme') }}">
+
     <!-- Fonts CSS -->
     {% setcontent settings = 'settings' limit 1 returnsingle %}
     {% if settings != "" and settings.font != "" %}
-      <link rel="stylesheet" href="{{ asset('fonts/font-'~settings.font~'.css', 'theme') }}">
+      <link rel="stylesheet" href="{{ asset('dist/css/fonts/'~settings.font~'.css', 'theme') }}">
     {% else %}
-      <link rel="stylesheet" href="{{ asset('fonts/font-rubik.css', 'theme') }}">
+      <link rel="stylesheet" href="{{ asset('dist/css/fonts/rubik.css', 'theme') }}">
     {% endif %}
-    <!-- Flexcards CSS -->
-    <!--link rel="stylesheet" href="{{ asset('css/flexcards.css', 'theme') }}"-->
-    <!-- Cookie alert -->
-    <!--link rel="stylesheet" href="{{ asset('css/cookiealert.css', 'theme') }}"-->
+    
     <!-- Font size -->
     {% if settings != "" and settings.fontsize != "" %}
     {% set remsize = settings.fontsize/16 %}
