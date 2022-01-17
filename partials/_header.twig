@@ -11,10 +11,10 @@
             {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
     </title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css', 'theme') }}">
+    <!-- Flexfolio CSS -->
+    <link rel="stylesheet" href="{{ asset('dist/flexfolio.ada04524.css', 'theme') }}">
     <!-- Fontawesome ALL -->
-    <link rel="stylesheet" href="{{ asset('css/fontawesome5/css/all.min.css', 'theme') }}" rel="stylesheet">
+    <!-- link rel="stylesheet" href="{{ asset('css/fontawesome5/css/all.min.css', 'theme') }}" rel="stylesheet">-->
     <!-- Fonts CSS -->
     {% setcontent settings = 'settings' limit 1 returnsingle %}
     {% if settings != "" and settings.font != "" %}
@@ -23,9 +23,9 @@
       <link rel="stylesheet" href="{{ asset('fonts/font-rubik.css', 'theme') }}">
     {% endif %}
     <!-- Flexcards CSS -->
-    <link rel="stylesheet" href="{{ asset('css/flexcards.css', 'theme') }}">
+    <!--link rel="stylesheet" href="{{ asset('css/flexcards.css', 'theme') }}"-->
     <!-- Cookie alert -->
-    <link rel="stylesheet" href="{{ asset('css/cookiealert.css', 'theme') }}">
+    <!--link rel="stylesheet" href="{{ asset('css/cookiealert.css', 'theme') }}"-->
     <!-- Font size -->
     {% if settings != "" and settings.fontsize != "" %}
     {% set remsize = settings.fontsize/16 %}
