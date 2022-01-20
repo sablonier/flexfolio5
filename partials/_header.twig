@@ -26,10 +26,6 @@
       <link rel="stylesheet" href="{{ asset('dist/css/fonts/rubik.css', 'theme') }}">
     {% endif %}
     
-    <!-- Font size -->
-    {% if settings != "" and settings.fontsize != "" %}
-    {% set remsize = settings.fontsize/16 %}
-    
     <!-- Font naming -->
     {% if settings.font == "publicsans" %}
       {% set fontname = "Public SansVariable" %}
@@ -40,12 +36,15 @@
     <style>
       body {
         font-family: '{{ fontname }}';
-        font-size: {{ remsize|replace({',':'.'}) }}rem;
+        font-size: {{ (settings.fontsize/16)|replace({',':'.'}) }}rem;
         line-height: {{ settings.lineheight|replace({',':'.'}) }}rem;
         padding-top: 80px;
       }
+      .navbar {
+        background: {{ settings.navcolor }};
+        font-size: {{ (settings.navfontsize)/16|replace({',':'.'}) }}rem;;
+      }
     </style>
-    {% endif %}
   </head>
 
 

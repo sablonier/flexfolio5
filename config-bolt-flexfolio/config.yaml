@@ -2,7 +2,7 @@
 # in the project root.
 
 # The name of the website
-sitename: All mine
+sitename: All-mine.org
 payoff: Portfolio theme for Bolt 5
 
 secret: '%env(APP_SECRET)%'

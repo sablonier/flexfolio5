@@ -16,24 +16,40 @@ settings:
             label: Icon code
             default: pin-angle-fill
             group: Icon
+        expandnav:
+            label: Menü auf grossen Bildschirmen anzeigen
+            type: checkbox
+            default: true
+            group: Navigation
+        navcolor:
+            label: Hintergrundfarbe Menü
+            type: text
+            default: 'rgba(255,0,0,0.2)'
+            group: Navigation
+        navfontsize:
+            label: Schriftgrösse Menü
+            type: number
+            mode: integer
+            default: 16
+            group: Navigation
         font:
             type: select
             values: [ publicsans, rubik ]
             default: 'rubik'
-            group: Einstellungen
+            group: Schrift
         fontsize:
             label: Basis Schriftgrösse
             type: number
             mode: integer
             default: 18
-            group: Einstellungen
+            group: Schrift
         lineheight:
             label: Zeilenabstand
             type: number
             mode: float
             step: 0.05
             default: 1.5
-            group: Einstellungen
+            group: Schrift
         colsxl:
             label: Anzahl Spalten Large/XL
             type: number
@@ -41,7 +57,7 @@ settings:
             default: 4
             min: 2
             max: 4
-            group: Einstellungen
+            group: Layout
         colsmobile:
             label: Anzahl Spalten Mobile
             type: number
@@ -49,30 +65,30 @@ settings:
             default: 1
             min: 1
             max: 2
-            group: Einstellungen
+            group: Layout
         homesort:
             label: Sortierung auf der Startseite (Zufall oder nach Datum)
             enlabel: Sort
             type: select
             values: [ random, latest ]
             default: 'random'
-            group: Einstellungen
+            group: Startseite
         homecount:
             label: Anzahl Objekte auf der Startseite
             type: number
             mode: integer
             default: 8
-            group: Einstellungen
+            group: Startseite
         footer:
             label: Fusszeile
             type: html
-            group: Einstellungen
+            group: Fusszeile
             localize: true
             default: all-mine.org --- Change footer in settings.
         socialmedia:
             label: Social Media
             type: collection
-            group: Einstellungen
+            group: Social Media
             collapsible: true
             fields:
                 media:
