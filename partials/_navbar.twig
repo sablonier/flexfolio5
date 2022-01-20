@@ -6,7 +6,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" style="padding-left: 0;" href="{{ '/' }}">
-              <i class="bi bi-columns-gap" style="color: red; padding-right: 8px"></i>{{ homebutton }}</a>
+              {% if settings.brandicon %}<i class="bi bi-{{ settings.brandiconcode }}" style="padding-right: 8px"></i>{% endif %}{{ homebutton }}</a>
           </li>
         </ul>
       </div>

@@ -6,6 +6,16 @@ settings:
     locales: ['de', 'en', 'fr', 'it']
     default_locale: 'de'
     fields:
+        brandicon:
+            label: Icon
+            type: checkbox
+            default: true
+            group: Icon
+        brandiconcode:
+            type: text
+            label: Icon code
+            default: pin-angle-fill
+            group: Icon
         font:
             type: select
             values: [ publicsans, rubik ]
@@ -136,7 +146,7 @@ works:
         displayhome:
             label: Zeige auf Startseite
             type: checkbox
-            default: true
+            default: false
             group: inhalt
         title:
             label: Titel

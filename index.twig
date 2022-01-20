@@ -1,16 +1,19 @@
+{# fetching settings #}
+{# ---------------- #}
+{% setcontent settings = 'settings' limit 1 returnsingle %}
+
+
 {% include 'partials/_header.twig' %}
     <body>
-{% include 'partials/_navbar.twig' %}
+{% include 'partials/_navbar.twig' with { 'brandicon' : settings.icon, 'brandiconcode' : settings.iconcode } %}
     
     {# fetching content #}
     {# ---------------- #}
-
-    {% setcontent settings = 'settings' limit 1 returnsingle %}
-    {# set homeset = 'works' settings.homesort settings.homecount where { displayhome: true } #}
+    {% set condition = { 'displayhome': true } %}
     {% if settings.homesort == 'random' %}
-        {% setcontent cards = 'works' random limit settings.homecount %}
+        {% setcontent cards = 'works' random where condition limit settings.homecount %}
     {% else %}
-        {% setcontent cards = 'works' orderby '-createdAt' limit settings.homecount %}
+        {% setcontent cards = 'works' where condition orderby '-createdAt' limit settings.homecount printquery %}
     {% endif %}
     
     {# getting the magic with rows and columns            #}
