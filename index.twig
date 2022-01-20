@@ -74,7 +74,7 @@
                     <div id="column-{{key}}" class="{{colclass}}">
                     {# push rows in columns #}
                     {% for card in cards|slice(magic[key][0],magic[key][1]) %}
-                            {% include 'partials/_card_index.twig' %}
+                            {% include 'partials/_card.twig' with { 'settings' : settings } %}
                     {% endfor %}
                     </div>
                 {% endfor %}

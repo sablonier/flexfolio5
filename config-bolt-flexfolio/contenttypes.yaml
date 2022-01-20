@@ -24,7 +24,7 @@ settings:
         navcolor:
             label: Hintergrundfarbe Menü
             type: text
-            default: 'rgba(255,0,0,0.2)'
+            default: 'rgba(255,42,0,0.3)'
             group: Navigation
         navfontsize:
             label: Schriftgrösse Menü
@@ -50,6 +50,11 @@ settings:
             step: 0.05
             default: 1.5
             group: Schrift
+        showtitle:
+            label: Titel unter Bildern anzeigen
+            type: checkbox
+            default: true
+            group: Layout
         colsxl:
             label: Anzahl Spalten Large/XL
             type: number

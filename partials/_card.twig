@@ -13,8 +13,10 @@
         {% endif %}
         {{ card.previewtext }}
         </div>
+        {% if settings.showtitle == true %}
         <div class="card-text small">
             <a href="{{ card|link }}">{{ card.title }}</a>
         </div>
+        {% endif %}
     </div>
 </div>
