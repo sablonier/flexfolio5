@@ -21,7 +21,8 @@ settings:
             label: Zeilenabstand
             type: number
             mode: float
-            default: 1.25
+            step: 0.05
+            default: 1.5
             group: Einstellungen
         colsxl:
             label: Anzahl Spalten Large/XL
