@@ -7,7 +7,11 @@
 
     {% setcontent settings = 'settings' limit 1 returnsingle %}
     {# set homeset = 'works' settings.homesort settings.homecount where { displayhome: true } #}
-    {% setcontent cards = 'works' orderby 'id' limit settings.homecount %}
+    {% if settings.homesort == 'random' %}
+        {% setcontent cards = 'works' random limit settings.homecount %}
+    {% else %}
+        {% setcontent cards = 'works' orderby '-createdAt' limit settings.homecount %}
+    {% endif %}
     
     {# getting the magic with rows and columns            #}
     {# i.e. 10 entries should give = 3/3/2/2 not 3/3/3/1  #}

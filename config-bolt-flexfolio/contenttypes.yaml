@@ -15,7 +15,7 @@ settings:
             label: Basis Schriftgrösse
             type: number
             mode: integer
-            default: 16
+            default: 18
             group: Einstellungen
         lineheight:
             label: Zeilenabstand
@@ -119,10 +119,9 @@ pages:
             localize: true
         template:
             type: templateselect
-            filter: 'page*.twig'
+            filter: '*.twig'
             group: template
     taxonomy: [ pagesort ]
-    record_template: page.twig
     recordsperpage: 10
     default_status: published
     icon_many: "fa:columns"
