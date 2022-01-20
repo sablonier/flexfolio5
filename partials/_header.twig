@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ asset('dist/css/flexfolio.css', 'theme') }}">
 
     <!-- Fonts CSS -->
-    {% setcontent settings = 'settings' limit 1 returnsingle %}
     {% if settings != "" and settings.font != "" %}
       <link rel="stylesheet" href="{{ asset('dist/css/fonts/'~settings.font~'.css', 'theme') }}">
     {% else %}
