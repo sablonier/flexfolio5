@@ -8,7 +8,7 @@ settings:
     fields:
         font:
             type: select
-            values: [ rubik, crimson, elaine, avrile ]
+            values: [ publicsans, rubik ]
             default: 'rubik'
             group: Einstellungen
         fontsize:

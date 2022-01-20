@@ -5,6 +5,7 @@
   "source": [
     "src/css/flexfolio.scss",
     "src/css/fonts/rubik.scss",
+    "src/css/fonts/publicsans.scss",
     "src/js/flexfolio.js",
     "src/js/flexfolio_2221.js",
     "src/js/flexfolio_3321.js",
@@ -23,6 +24,7 @@
     "sass": "^1.46.0"
   },
   "dependencies": {
+    "@fontsource/public-sans": "^4.5.0",
     "@fontsource/rubik": "^4.5.0",
     "@popperjs/core": "^2.11.2",
     "bootstrap": "^5.1.3",
