@@ -50,8 +50,13 @@ settings:
             step: 0.05
             default: 1.25
             group: Schrift
-        showtitle:
-            label: Titel unter Bildern anzeigen
+        showtitleindex:
+            label: Titel unter Bildern anzeigen auf Startseite
+            type: checkbox
+            default: true
+            group: Layout
+        showtitlepages:
+            label: Titel unter Bildern anzeigen auf Unterseiten
             type: checkbox
             default: true
             group: Layout
