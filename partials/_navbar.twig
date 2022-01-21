@@ -8,6 +8,12 @@
             {% if settings.brandicon %}<i class="bi bi-{{ settings.brandiconcode }}" style="padding-right: 8px"></i>{% endif %}{{ homebutton }}
         </a>
         </div>
+        <div class="navbar-nav me-auto">
+            {% setcontent pages = 'pages' where { displaymenu: true } %}
+            {% for item in pages %}
+                <a class="nav-link d-none d-lg-inline" href="{{ item|link }}">{{ item|title }}</a>
+            {% endfor %}
+        </div>
         <div class="align-content-end"> 
         {# Locales #}
         {% if locales()|length > 1 %}
@@ -16,7 +22,7 @@
             {% endfor %}
         {% endif %}
         {# Menu button #}
-        <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" style="margin-left: 2rem" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas" style="margin-left: 2rem" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <i class="bi bi-list"></i>
         </button>
         </div>

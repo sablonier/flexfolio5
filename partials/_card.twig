@@ -1,5 +1,5 @@
 <div class="card" id="{{card.id}}">
-    <div class="card-block">
+    <div class="card-block" {% if card.previewbackground != 'rgba(255,255,255,1.0' %}style="background: {{ card.previewbackground }}"{% endif %}>
         <div>
         {% if card.previewimage|media != null %}
             <a href="{{ card|link }}">

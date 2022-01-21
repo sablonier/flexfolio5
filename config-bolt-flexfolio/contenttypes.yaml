@@ -41,14 +41,14 @@ settings:
             label: Basis Schriftgrösse
             type: number
             mode: integer
-            default: 18
+            default: 20
             group: Schrift
         lineheight:
             label: Zeilenabstand
             type: number
             mode: float
             step: 0.05
-            default: 1.5
+            default: 1.25
             group: Schrift
         showtitle:
             label: Titel unter Bildern anzeigen
@@ -186,6 +186,11 @@ works:
             height: 300px
             group: inhalt
             localize: true
+        previewbackground:
+            label: Vorschau Hintergrundfarbe
+            type: text
+            default: 'rgba(255,255,255,1.0)'
+            group: vorschau
         previewimage:
             label: Vorschau Bild
             type: image
