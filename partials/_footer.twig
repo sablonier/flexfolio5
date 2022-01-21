@@ -1,7 +1,7 @@
 
     <footer class="container-fluid">
         <div>
-            <div style="border-top: 1px solid black;">
+            <div style="border-top: 1px solid {{settings.navcolor}}">
                 <span class="small">© {{ "now"|date("Y")~" "~settings.footer|striptags('<a>') }}</span>
             </div>
         </div>
@@ -9,6 +9,65 @@
     
     <!-- Assets -->
     <script src={{ asset('dist/js/flexfolio.js', 'theme') }}></script>
+
+    <script>
+    new cookieNoticeJS({
+
+        // Localizations of the notice message
+        'messageLocales': {
+            'de': 'Diese Webseite verwendet Cookies für eine optimierte Anzeige auf Geräten.',
+            'en': 'This website uses cookies for best experience with your browser'
+        },
+
+        // Localizations of the dismiss button text
+        'buttonLocales': {
+            'de': 'OK',
+            'en': 'OK'
+        },
+
+        // Position for the cookie-notifier (default=bottom)
+        'cookieNoticePosition': 'bottom',
+
+        // Shows the "learn more button (default=false)
+        'learnMoreLinkEnabled': false,
+
+        // The href of the learn more link must be applied if (learnMoreLinkEnabled=true)
+        'learnMoreLinkHref': '/learn/more/index.html',
+
+        // Text for optional learn more button
+        'learnMoreLinkText': {
+            'en': 'learn more'
+        },
+
+        // The message will be shown again in X days
+        'expiresIn': 30,
+
+        // Specify a custom font family and size in pixels
+        'fontFamily': 'inherit',
+        'fontSize': 'inherit',
+
+        // Dismiss button background color
+        'buttonBgColor': '#fff',
+
+        // Dismiss button text color
+        'buttonTextColor': '#000',
+
+        // Notice background color
+        'noticeBgColor': '#111',
+
+        // Notice text color
+        'noticeTextColor': '#fff',
+
+        // the learnMoreLink color (default='#009fdd')
+        'linkColor': '#f00',
+
+        // The target of the learn more link (default='', or '_blank')
+        'linkTarget': '',
+
+        // Print debug output to the console (default=false)
+        'debug': false
+    });
+</script>
 
   </body>
 </html>

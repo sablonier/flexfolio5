@@ -5,7 +5,7 @@
 
 {% include 'partials/_header.twig' with { 'settings' : settings } %}
     <body>
-{% include 'partials/_navbar.twig' with { 'brandicon' : settings.icon, 'brandiconcode' : settings.iconcode } %}
+{% include 'partials/_navbar.twig' with { 'settings' : settings } %}
     
     {# fetching content #}
     {# ---------------- #}

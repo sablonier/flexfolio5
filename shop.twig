@@ -1,6 +1,11 @@
-{% include 'partials/_header.twig' %}
+{# fetching settings #}
+{# ----------------- #}
+{% setcontent settings = 'settings' limit 1 returnsingle %}
+
+
+{% include 'partials/_header.twig' with { 'settings' : settings } %}
     <body>
-{% include 'partials/_navbar.twig' %}
+{% include 'partials/_navbar.twig' with { 'settings' : settings } %}
     
     {# ecwid shop       #}
     {# ---------------- #}
@@ -9,13 +14,10 @@
     {# --------- #}
     <div class="container-fluid">
         <div class="row">
-            <div id="my-store-70119844"></div>
-            <div>
-                <script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?70119844&data_platform=code&data_date=2022-01-20" charset="utf-8"></script><script type="text/javascript"> xProductBrowser("categoriesPerRow=3","views=grid(20,3) list(60) table(60)","categoryView=grid","searchView=list","id=my-store-70119844");</script>
-            </div>
-        </div> 
+            {{ settings.shop }}
+        </div>
     </div>
 
     <div onclick="topFunction();" id="scrollup"><span class="icon-up-open"></span></div>
 
-{% include 'partials/_footer.twig' %}
+{% include 'partials/_footer.twig' with { 'settings' : settings } %}
