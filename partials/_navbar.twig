@@ -1,14 +1,63 @@
 {% set homebutton = config.get('general/sitename') %}
+
 <nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid">
+    <div class="container-fluid">
+        {# Brand and home button #}
+        <div class="align-content-start"> 
+        <a class="nav-link" style="padding-left: 0;" href="{{ '/' }}">
+            {% if settings.brandicon %}<i class="bi bi-{{ settings.brandiconcode }}" style="padding-right: 8px"></i>{% endif %}{{ homebutton }}
+        </a>
+        </div>
+        <div class="align-content-end"> 
+        {# Locales #}
+        {% if locales()|length > 1 %}
+            {% for locale in locales() %}
+                <a class="btn btn-light btn-sm" href="{{ locale.link }}">{{ locale.code|upper }}</a>
+            {% endfor %}
+        {% endif %}
+        {# Menu button #}
+        <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" style="margin-left: 2rem" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <i class="bi bi-list"></i>
+        </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="menu">
+    <div class="offcanvas-header">
+        <h5 id="menu">All mine</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="navbar-nav">
+            {% setcontent pages = 'pages' where { displaymenu: true } %}
+            {% for item in pages %}
+                <a class="nav-link" href="{{ item.link }}">{{ item.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+<!--nav class="navbar navbar-expand-lg fixed-top">
+  <div class="conta(function mainScript() {
+  "use strict";
+  const offcanvasToggle = document.querySelector(
+    '[data-bs-toggle="offcanvas"]',
+  );
+  const offcanvasCollapse = document.querySelector(".offcanvas-collapse");
+  offcanvasToggle.addEventListener("click", function () {
+    offcanvasCollapse.classList.toggle("open");
+  });
+})();iner-fluid">
     {# Brand and home button #}
     <a class="nav-link" style="padding-left: 0;" href="{{ '/' }}">
         {% if settings.brandicon %}<i class="bi bi-{{ settings.brandiconcode }}" style="padding-right: 8px"></i>{% endif %}{{ homebutton }}
     </a>
     {# Togglers #}
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#language" aria-controls="language" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="bi bi-globe"></i>
-    </button>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
       <i class="bi bi-list"></i>
     </button>
@@ -28,10 +77,19 @@
                 <a class="nav-link" href="{{ locale.link }}">{{ locale.code|upper }}</a>
             {% endfor %}
         </div>
-    </div>
+    </div>(function mainScript() {
+  "use strict";
+  const offcanvasToggle = document.querySelector(
+    '[data-bs-toggle="offcanvas"]',
+  );
+  const offcanvasCollapse = document.querySelector(".offcanvas-collapse");
+  offcanvasToggle.addEventListener("click", function () {
+    offcanvasCollapse.classList.toggle("open");
+  });
+})();
     </div>
   </div>
-</nav>
+</nav>-->
 
 <!-- nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">

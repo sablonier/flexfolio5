@@ -3,7 +3,7 @@
 settings:
     name: Settings
     singular_name: Setting
-    locales: ['de', 'en', 'fr', 'it']
+    locales: ['de', 'en']
     default_locale: 'de'
     fields:
         brandicon:
@@ -122,7 +122,7 @@ settings:
 pages:
     name: Pages
     singular_name: Page
-    locales: ['de', 'en', 'fr', 'it']
+    locales: ['de', 'en']
     default_locale: 'de'
     fields:
         displaymenu:
@@ -161,7 +161,7 @@ pages:
 works:
     name: Works
     singular_name: Work
-    locales: ['de', 'en', 'fr', 'it']
+    locales: ['de', 'en']
     default_locale: 'de'
     fields:
         displayhome:
