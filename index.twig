@@ -20,44 +20,31 @@
     {# i.e. 10 entries should give = 3/3/2/2 not 3/3/3/1  #}
     {# -------------------------------------------------- #}
     {% if settings.colsxl > 0 %}
-        {% set rows = settings.colsxl %}
+        {% set columns = settings.colsxl %}
     {% else %}
-        {% set rows = 4 %}
+        {% set columns = 4 %}
     {% endif %}
 
-    {% set l = cards|length %} {# how many cards? #}
-    {% set d = cards|length // rows %} {# cards / rows #}
-    {% set r1 = cards|length % rows %} {# remaining cards #}
+    {% set pattern = [] %}
+    {% set ids = [] %}
 
-    {% set arr = [] %}
-    {% set last = 0 %}
-    
-    {% set magicloop = rows-1 %}
+    {% for card in cards %}
+        {% set ids = ids|merge([card.id]) %}
+    {% endfor %}
 
-    {% if r1 != 0 %}
-        {% for key in 0..magicloop %}
-            {% if key > 0 %}
-                {% set last = last + arr[key-1][1] %}
-            {% endif %}
-            {% if loop.index <= r1 %}
-                {% set arr = arr|merge([ [last, d+1] ]) %}
-                {% set r1 = r1-1 %}
-            {% else %}
-                {% set arr = arr|merge([ [last, d+r1] ]) %}
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        {% for key in 0..magicloop %}
-            {% if key > 0 %}
-                {% set last = last + arr[key-1][1] %}
-            {% endif %}
-            {% set arr = arr|merge([ [last, d] ]) %}
+    {% set l = cards|length %} {# total cards #}
+    {% set d = cards|length // columns %} {# cards / columns #}
+    {% set r1 = cards|length % columns %} {# remaining cards #}
+
+    {% for i in 0..columns-1 %}
+        {% if r1 > 0 %}
+            {% set pattern = pattern|merge([[ids[i], ids[i+columns]]]) %}
             {% set r1 = r1-1 %}
-        {% endfor %}
-    {% endif %}
+        {% else %}
+            {% set pattern = pattern|merge([[ids[i]]]) %}
+        {% endif %}
+    {% endfor %}
 
-    {% set magic = arr %}
-    
     {# container #}
     {# --------- #}
     <div class="container-fluid">
@@ -70,11 +57,14 @@
                     {% elseif settings.colsxl == 2 %}
                         {% set colclass = 'col-sm-12 col-md-6 col-lg-6 col-xl-6' %}
                 {% endif %}
-                {% for key in magic|keys %}
-                    <div id="column-{{key}}" class="{{colclass}}">
-                    {# push rows in columns #}
-                    {% for card in cards|slice(magic[key][0],magic[key][1]) %}
+                
+                {# push rows in columns #}
+                {% for i in 0..columns-1 %}
+                    <div id="column-{{i}}" class="{{colclass}}">
+                    {% for card in cards %}
+                        {% if card.id in pattern[i] %}
                             {% include 'partials/_card.twig' with { 'settings' : settings } %}
+                        {% endif %}
                     {% endfor %}
                     </div>
                 {% endfor %}
