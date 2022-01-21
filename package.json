@@ -6,10 +6,7 @@
     "src/css/flexfolio.scss",
     "src/css/fonts/rubik.scss",
     "src/css/fonts/publicsans.scss",
-    "src/js/flexfolio.js",
-    "src/js/flexfolio_2221.js",
-    "src/js/flexfolio_3321.js",
-    "src/js/flexfolio_4321.js"
+    "src/js/flexfolio.js"
   ],
   "scripts": {
     "watch": "parcel watch --no-content-hash --no-source-maps --dist-dir dist",
