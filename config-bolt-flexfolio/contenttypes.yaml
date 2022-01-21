@@ -24,7 +24,7 @@ settings:
         navcolor:
             label: Hintergrundfarbe Menü
             type: text
-            default: 'rgba(255,42,0,0.3)'
+            default: 'rgba(255, 181, 217, 1)'
             group: Navigation
         navfontsize:
             label: Schriftgrösse Menü
