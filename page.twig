@@ -9,12 +9,8 @@
     
     {# fetching content #}
     {# ---------------- #}
-    {% set condition = { 'displayhome': true } %}
-    {% if settings.homesort == 'random' %}
-        {% setcontent cards = 'works' random where condition limit settings.homecount %}
-    {% else %}
-        {% setcontent cards = 'works' where condition orderby '-createdAt' limit settings.homecount %}
-    {% endif %}
+    {% set relatedrecords = record.related() %}
+    {% set cards = relatedrecords %}
     
     {# getting the magic with rows and columns            #}
     {# i.e. 10 entries should give = 3/3/2/2 not 3/3/3/1  #}
