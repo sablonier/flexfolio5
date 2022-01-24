@@ -9,7 +9,7 @@
     
     {# fetching content #}
     {# ---------------- #}
-    {% set relatedrecords = record.related() %}
+    {% set relatedrecords = record|related() %}
     {% set cards = relatedrecords %}
     
     {# getting the magic with rows and columns            #}
@@ -57,7 +57,7 @@
                 {% for i in 0..columns-1 %}
                     <div id="column-{{i}}" class="{{colclass}}">
                     {% for card in cards %}
-                        {% if card.id in pattern[i] %}
+                        {% if pattern[i] is defined && card.id in pattern[i] %}
                             {% include 'partials/_card.twig' with { 'settings' : settings } %}
                         {% endif %}
                     {% endfor %}

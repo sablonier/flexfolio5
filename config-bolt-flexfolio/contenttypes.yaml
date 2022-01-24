@@ -157,8 +157,7 @@ pages:
             type: templateselect
             filter: '*.twig'
             group: template
-    taxonomy: [ pagesort ]
-    recordsperpage: 10
+    records_per_page: 10
     default_status: published
     icon_many: "fa:columns"
     icon_one: "fa:columns"
@@ -172,7 +171,7 @@ works:
         displayhome:
             label: Zeige auf Startseite
             type: checkbox
-            default: false
+            default: true
             group: inhalt
         title:
             label: Titel
@@ -280,12 +279,13 @@ works:
     relations:
         pages:
             multiple: false
+            required: false
             label: Wähle eine Seite
-            order: -datepublish
+            order: -id
     default_status: published
     taxonomy: [ worksort ]
     record_template: record.twig
-    recordsperpage: 10
+    records_per_page: 10
     icon_many: "fa:photo-video"
     icon_one: "fa:photo-video"
 

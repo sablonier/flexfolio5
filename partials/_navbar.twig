@@ -11,7 +11,7 @@
         <div class="navbar-nav me-auto">
             {% setcontent pages = 'pages' where { displaymenu: true } %}
             {% for item in pages %}
-                <a class="nav-link d-none d-lg-inline" href="{{ item|link }}">{{ item|title }}</a>
+                <a class="nav-link d-none d-lg-inline" href="{{ item|link }}">{{ item.title }}</a>
             {% endfor %}
         </div>
         <div class="align-content-end"> 
