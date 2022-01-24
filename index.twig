@@ -60,6 +60,7 @@
                 {# push rows in columns #}
                 {% for i in 0..columns-1 %}
                     <div id="column-{{i}}" class="{{colclass}}">
+                    
                     {% for card in cards %}
                         {% if pattern[i] is defined && card.id in pattern[i] %}
                             {% include 'partials/_card.twig' with { 'settings' : settings } %}

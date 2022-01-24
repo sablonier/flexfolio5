@@ -199,7 +199,6 @@ works:
             label: Vorschau Bild
             type: image
             extensions: [ gif, jpg, png ]
-            localize: true
             group: vorschau
         previewtext:
             label: Vorschau Text
@@ -225,7 +224,6 @@ works:
                             label: Bild
                             type: image
                             extensions: [ gif, jpg, png ]
-                            localize: true
                         imgcaption:
                             label: Legende
                             type: textarea
@@ -261,7 +259,6 @@ works:
                             label: Dokument Vorschaubild
                             type: image
                             extensions: [ gif, jpg, png ]
-                            localize: true
                         docfile:
                             label: Dokument
                             type: file
