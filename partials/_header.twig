@@ -42,7 +42,11 @@
       }
       .navbar {
         background: {{ settings.navcolor }};
-        font-size: {{ (settings.navfontsize)/16|replace({',':'.'}) }}rem;;
+        font-size: {{ (settings.navfontsize)/16|replace({',':'.'}) }}rem;
+      }
+
+      footer {
+        font-size: {{ (settings.footerfontsize)/16|replace({',':'.'}) }}rem;
       }
     </style>
   </head>

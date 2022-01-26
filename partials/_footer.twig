@@ -1,8 +1,8 @@
 
-    <footer class="container-fluid">
+    <footer class="footer container-fluid">
         <div>
             <div style="border-top: 1px solid {{settings.navcolor}}">
-                <span class="small">© {{ "now"|date("Y")~" "~settings.footer|striptags('<a>') }}</span>
+                © {{ "now"|date("Y") }} {{ settings.footer|striptags('<a>')|raw }}
             </div>
         </div>
     </footer>

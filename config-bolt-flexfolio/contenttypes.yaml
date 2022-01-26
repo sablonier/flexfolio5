@@ -41,7 +41,7 @@ settings:
             label: Basis Schriftgrösse
             type: number
             mode: integer
-            default: 20
+            default: 16
             group: Schrift
         lineheight:
             label: Zeilenabstand
@@ -95,6 +95,12 @@ settings:
             group: Fusszeile
             localize: true
             default: all-mine.org --- Change footer in settings.
+        footerfontsize:
+            label: Schriftgrösse Footer
+            type: number
+            mode: integer
+            default: 14
+            group: Fusszeile
         socialmedia:
             label: Social Media
             type: collection
