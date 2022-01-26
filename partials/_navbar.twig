@@ -5,7 +5,16 @@
         {# Brand and home button #}
         <div class="align-content-start"> 
         <a class="nav-link" style="padding-left: 0;" href="{{ '/' }}">
-            {% if settings.brandicon %}<i class="bi bi-{{ settings.brandiconcode }}" style="padding-right: 8px"></i>{% endif %}{{ homebutton }}
+            {% if settings.brandicon %}
+                {% if settings.logoimg != "" %}
+                    <img src="{{ settings.logoimg.path }}" alt="{{ settings.logoimg.alt|default('Logo') }}" class="float-start" style="margin: 0; padding: 0; margin-right: 6px; width: 40px; height: 25px">
+                {% else %}
+                    <i class="{{ settings.brandiconcode }}"></i>
+                {% endif %}
+            {% endif %}
+            <span style="font-weight: 700">
+                {{ settings.logotext }}
+            </span>
         </a>
         </div>
         <div class="navbar-nav me-auto">

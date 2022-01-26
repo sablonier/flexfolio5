@@ -6,16 +6,26 @@ settings:
     locales: ['de', 'en']
     default_locale: 'de'
     fields:
+        logotext:
+            label: Site Name
+            type: text
+            default: 'Change me!'
+            group: Name/Logo
         brandicon:
-            label: Icon
+            label: Icon oder Logo
             type: checkbox
             default: true
-            group: Icon
+            group: Name/Logo
         brandiconcode:
             type: text
             label: Icon code
-            default: pin-angle-fill
-            group: Icon
+            default: bi bi-pin-angle-fill
+            group: Name/Logo
+        logoimg:
+            label: Logo als Bild (40 x 25 px)
+            type: image
+            alt: true
+            group: Name/Logo
         expandnav:
             label: Menü auf grossen Bildschirmen anzeigen
             type: checkbox
@@ -33,6 +43,7 @@ settings:
             default: 18
             group: Navigation
         font:
+            label: Schriftart
             type: select
             values: [ publicsans, rubik ]
             default: 'publicsans'
