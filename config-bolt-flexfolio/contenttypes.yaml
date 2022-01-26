@@ -155,7 +155,7 @@ pages:
             localize: true
         template:
             type: templateselect
-            filter: '*.twig'
+            filter: 'page*.twig'
             group: template
     records_per_page: 10
     default_status: published
@@ -280,8 +280,7 @@ works:
             label: Wähle eine Seite
             order: -id
     default_status: published
-    taxonomy: [ worksort ]
-    record_template: record.twig
+    record_template: work*.twig
     records_per_page: 10
     icon_many: "fa:photo-video"
     icon_one: "fa:photo-video"

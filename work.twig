@@ -1,0 +1,91 @@
+{% include 'partials/_header.twig' %}
+
+<body>
+    {% set ids = [] %}
+    {% include 'partials/_navbar.twig' %}
+    <div class="container-fluid">
+        <div class="row">
+            {# first wide column with record content #}
+            {# ------------------------------------- #}
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="card">
+                    <div class="card-block">
+                        {# title #}
+                        {# ----- #}
+                        <h4 class="card-title"> {{ record.title }}</h4>
+                        {# image, video, document #}
+                        {# ----- #}
+                        {% if record.gallery != "" %}
+                            {% for item in record.gallery %}
+                                {% if item.imgimage.file != "" %}
+                                    <div class="card">
+                                        {% set resimage = item.imgimage.file %}
+                                        {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
+                                        <div class="card-text small">
+                                            {{ item.imgcaption }}
+                                        </div>
+                                    </div>
+                                {% elseif item.vidvideo != "" %}
+                                <div class="card">
+                                    <video width="100%" controls src="/files/{{ item.vidvideo }}">
+                                        Sorry, your browser doesn't support embedded videos, you can <a href="{{ item.vidvideo }}">download it</a>
+                                        and watch it with your favorite video player.
+                                    </video>
+                                    <div class="card-text small">
+                                        {{ item.vidcaption }}
+                                    </div>
+                                </div>
+                                {% elseif item.docfile != "" %}
+                                    {% if item.docpreview != "" %}
+                                        <div class="card" >
+                                        {% set resimage = item.docpreview.file %}
+                                        {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
+                                    {% else %}
+                                        <div class="card" >
+                                        <img src="/theme/flexfolio/images/missing_preview.png" width="100%" alt="No preview.">
+                                    {% endif %}
+                                    <a href="/files/{{ item.docfile }}">
+                                        <div class="carousel-item-overlay">
+                                            <span class="icon-down-circled">&nbsp;{{ "Download"}}</span>
+                                        </div>
+                                    </a>
+                                    <div class="card-text small">
+                                        {{ item.doccaption }}
+                                    </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {# second column with related stuff if available #}
+            {# --------------------------------------------- #}
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                    {# text #}
+                    {# ---- #}
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="card-text">{{ record.description }}</div>
+                            {# show other records with same relation #}
+                            {# --------------------------------- #}
+                            <div style="padding-top: 0.5rem;"></div>
+                            {% setcontent rels = 'work' %}
+                            {% for rel in rels %}
+                            {% if loop.first %}
+                                    <h6 style="border-bottom: 1px solid black;">{{ record.related()[0].title }}</h6>
+                            {% endif %}
+                            {% if rel.related() == record.related() %}
+                            <h4 class="card-title related {%  if record.id == rel.id %}current{% endif %}">
+                                    <a href="{{ rel.link }}">
+                                    {{ rel.title }}</a>
+                            </h4>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <div onclick="topFunction();" id="scrollup"><span class="icon-up-open"></span></div>
+    {% include 'partials/_footer.twig' %}
