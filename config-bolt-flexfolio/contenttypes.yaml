@@ -30,25 +30,25 @@ settings:
             label: Schriftgrösse Menü
             type: number
             mode: integer
-            default: 16
+            default: 18
             group: Navigation
         font:
             type: select
             values: [ publicsans, rubik ]
-            default: 'rubik'
+            default: 'publicsans'
             group: Schrift
         fontsize:
             label: Basis Schriftgrösse
             type: number
             mode: integer
-            default: 16
+            default: 18
             group: Schrift
         lineheight:
             label: Zeilenabstand
             type: number
             mode: float
             step: 0.05
-            default: 1.25
+            default: 1.6
             group: Schrift
         showtitleindex:
             label: Titel unter Bildern anzeigen auf Startseite
