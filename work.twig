@@ -7,15 +7,12 @@
 {% include 'partials/_navbar.twig' with { 'settings' : settings } %}
     {% set ids = [] %}
     <div class="container-fluid">
-        <div class="row">
+        <div class="row flex-md-row-reverse">
             {# first wide column with record content #}
             {# ------------------------------------- #}
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <div class="card">
                     <div class="card-block">
-                        {# title #}
-                        {# ----- #}
-                        <h4 class="card-title"> {{ record.title }}</h4>
                         {# image, video, document #}
                         {# ----- #}
                         {% if record.gallery != "" %}
@@ -64,27 +61,30 @@
             </div>
             {# second column with related stuff if available #}
             {# --------------------------------------------- #}
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     {# text #}
                     {# ---- #}
                     <div class="card">
                         <div class="card-block">
+                            {# title #}
+                            {# ----- #}
+                            <h4 class="card-title"> {{ record.title }}</h4>
                             <div class="card-text">{{ record.description }}</div>
                             {# show other records with same relation #}
                             {# --------------------------------- #}
                             <div style="padding-top: 0.5rem;"></div>
-                            {% set rels = record|related() %}
+                            {# set rels = record|related() %}
                             {% for rel in rels %}
-                            {# if loop.first %}
+                            {% if loop.first %}
                                     <h6 style="border-bottom: 1px solid black;">{{ record.related()[0].title }}</h6>
                             {% endif %}
-                            {% if rel.related() == record.related() %}
+                            {% if rel.related() == card.related() %}
                             <h4 class="card-title related {%  if record.id == rel.id %}current{% endif %}">
                                     <a href="{{ rel.link }}">
                                     {{ rel.title }}</a>
                             </h4>
-                            {% endif #}
-                            {% endfor %}
+                            {% endif %}
+                            {% endfor #}
                         </div>
                     </div>
                 </div>
