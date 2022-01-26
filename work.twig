@@ -1,8 +1,11 @@
-{% include 'partials/_header.twig' %}
+{# fetching settings #}
+{# ----------------- #}
+{% setcontent settings = 'settings' limit 1 returnsingle %}
 
-<body>
+{% include 'partials/_header.twig' with { 'settings' : settings } %}
+    <body>
+{% include 'partials/_navbar.twig' with { 'settings' : settings } %}
     {% set ids = [] %}
-    {% include 'partials/_navbar.twig' %}
     <div class="container-fluid">
         <div class="row">
             {# first wide column with record content #}
@@ -70,9 +73,9 @@
                             {# show other records with same relation #}
                             {# --------------------------------- #}
                             <div style="padding-top: 0.5rem;"></div>
-                            {% setcontent rels = 'work' %}
+                            {% set rels = record|related() %}
                             {% for rel in rels %}
-                            {% if loop.first %}
+                            {# if loop.first %}
                                     <h6 style="border-bottom: 1px solid black;">{{ record.related()[0].title }}</h6>
                             {% endif %}
                             {% if rel.related() == record.related() %}
@@ -80,7 +83,7 @@
                                     <a href="{{ rel.link }}">
                                     {{ rel.title }}</a>
                             </h4>
-                            {% endif %}
+                            {% endif #}
                             {% endfor %}
                         </div>
                     </div>
@@ -88,4 +91,5 @@
             </div>
 
     <div onclick="topFunction();" id="scrollup"><span class="icon-up-open"></span></div>
-    {% include 'partials/_footer.twig' %}
+
+{% include 'partials/_footer.twig' with { 'settings' : settings } %}
