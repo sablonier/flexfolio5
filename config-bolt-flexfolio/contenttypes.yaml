@@ -112,6 +112,14 @@ settings:
             mode: integer
             default: 14
             group: Fusszeile
+        metadescription:
+            label: Seitenbeschreibung für Suchmaschinen
+            type: text
+            class: large
+            allow_html: false
+            pattern: '^.{1,160}$'
+            postfix: "<strong>Max. 160 Zeichen</strong> allgemeine Beschreibung der Seite für die Suchresultate bei Suchmaschinen."
+            group: Search/SEO
         socialmedia:
             label: Social Media
             type: collection
@@ -207,11 +215,6 @@ works:
             height: 300px
             group: inhalt
             localize: true
-        previewbackground:
-            label: Vorschau Hintergrundfarbe
-            type: text
-            default: 'rgba(255,255,255,1.0)'
-            group: vorschau
         previewimage:
             label: Vorschau Bild
             type: image
@@ -221,6 +224,11 @@ works:
             label: Vorschau Text
             type: html
             localize: true
+            group: vorschau
+        previewbackground:
+            label: Vorschau Hintergrundfarbe
+            type: text
+            default: 'rgba(255,255,255,1.0)'
             group: vorschau
         gallery:
             label: Galerie
@@ -288,7 +296,7 @@ works:
                             localize: true
         template:
             type: templateselect
-            filter: 'record*.twig'
+            filter: 'work*.twig'
             group: template
     relations:
         pages:

@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Adding title for every page, default bolt style -->
     <title>
-            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
-            {{ config.get('general/sitename') -}}
-            {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
+            {% if settings.logotext is defined %}
+              {{ settings.logotext|striptags }}
+            {% endif %}
+            {% if record.template == 'page.twig' || record.template == 'work.twig' %}
+              | {{ record.title }}
+            {% endif %}
     </title>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/favicon/apple-touch-icon-180x180.png', 'theme') }}">
