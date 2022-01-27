@@ -10,27 +10,41 @@ settings:
             label: Site Name
             type: text
             default: 'Change me!'
-            group: Name/Logo
+            group: Logo, Menu, Sprache
         brandicon:
             label: Icon oder Logo
             type: checkbox
             default: true
-            group: Name/Logo
+            group: Logo, Menu, Sprache
         brandiconcode:
             type: text
-            label: Icon code
+            label: Bootstrap Icon Code
+            postfix: 'https://icons.getbootstrap.com/'
             default: bi bi-pin-angle-fill
-            group: Name/Logo
+            group: Logo, Menu, Sprache
         logoimg:
             label: Logo als Bild (40 x 25 px)
             type: image
             alt: true
-            group: Name/Logo
+            group: Logo, Menu, Sprache
         expandnav:
             label: Menü auf grossen Bildschirmen anzeigen
             type: checkbox
             default: true
-            group: Navigation
+            group: Logo, Menu, Sprache
+        languageselector:
+            label: Zeige Sprachwahl
+            type: checkbox
+            default: true
+            group: Logo, Menu, Sprache
+        metadescription:
+            label: Seitenbeschreibung für Suchmaschinen
+            type: text
+            class: large
+            allow_html: false
+            pattern: '^.{1,160}$'
+            postfix: "<strong>Max. 160 Zeichen</strong> allgemeine Beschreibung der Seite für die Suchresultate bei Suchmaschinen."
+            group: Logo, Menu, Sprache
         navcolor:
             label: Hintergrundfarbe Menü
             type: text
@@ -112,14 +126,6 @@ settings:
             mode: integer
             default: 14
             group: Fusszeile
-        metadescription:
-            label: Seitenbeschreibung für Suchmaschinen
-            type: text
-            class: large
-            allow_html: false
-            pattern: '^.{1,160}$'
-            postfix: "<strong>Max. 160 Zeichen</strong> allgemeine Beschreibung der Seite für die Suchresultate bei Suchmaschinen."
-            group: Search/SEO
         socialmedia:
             label: Social Media
             type: collection
@@ -139,9 +145,10 @@ settings:
                             label: Symbol
                             type: checkbox
                         symbolcode:
-                            label: Font Awesome Code
+                            label: Bootstrap Icon Code
+                            prefix: 'https://icons.getbootstrap.com/'
                             type: text
-                            placeholder: fab fa-instagram
+                            placeholder: bi bi-pin-angle-fill
     viewless: true
     singleton: true
     default_status: published
