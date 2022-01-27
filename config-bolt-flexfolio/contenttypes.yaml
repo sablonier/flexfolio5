@@ -181,6 +181,7 @@ pages:
         template:
             type: templateselect
             filter: 'page*.twig'
+            default: 'page.twig' 
             group: template
     records_per_page: 10
     default_status: published
@@ -297,6 +298,7 @@ works:
         template:
             type: templateselect
             filter: 'work*.twig'
+            default: 'work.twig' 
             group: template
     relations:
         pages:
