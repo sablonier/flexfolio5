@@ -11,7 +11,11 @@
     
     {# container #}
     {# --------- #}
+    {% if settings.layoutcontainer == 'fluid' %}
     <div class="container-fluid">
+    {% else %}
+    <div class="container">
+    {% endif %}
         <div class="row">
             {{ settings.shop }}
         </div>

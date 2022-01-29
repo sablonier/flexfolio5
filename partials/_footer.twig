@@ -1,5 +1,10 @@
 
+    
+    {% if settings.layoutcontainer == 'fluid' %}
     <footer class="footer container-fluid">
+    {% else %}
+    <footer class="footer container">
+    {% endif %}
         <div class="row">
             <div class="col-12 my-4"style="border-top: 1px solid {{settings.navcolor}}">
                 © {{ "now"|date("Y") }} {{ settings.footer|striptags('<a>')|raw }}

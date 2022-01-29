@@ -6,7 +6,11 @@
     <body>
 {% include 'partials/_navbar.twig' with { 'settings' : settings } %}
     {% set ids = [] %}
+    {% if settings.layoutcontainer == 'fluid' %}
     <div class="container-fluid">
+    {% else %}
+    <div class="container">
+    {% endif %}
         <div class="row flex-md-row-reverse">
             {# first wide column with record content #}
             {# ------------------------------------- #}

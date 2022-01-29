@@ -75,6 +75,13 @@ settings:
             step: 0.05
             default: 1.6
             group: Schrift
+        layoutcontainer:
+            label: Breite des Layouts
+            postfix: "'Fluid' streckt das Layout auf volle Bildschirmbreite (Standard: 'normal')"
+            type: select
+            values: [ 'normal', 'fluid' ]
+            default: 'normal'
+            group: Layout
         showtitleindex:
             label: Titel unter Bildern anzeigen auf Startseite
             type: checkbox
