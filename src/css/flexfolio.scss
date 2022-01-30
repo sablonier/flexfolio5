@@ -9,14 +9,23 @@
 // $body-bg: #333;
 
 
-$navbar-light-color: #111;
 $black: #111;
 
 $link-color: #111;
+$nav-link-color: #111;
 $link-decoration: underline;
 
 $enable-rounded: false;
-$border-width: 0;
+$card-border-width: 0;
+
+$link-hover-color: red;
+$btn-link-hover-color: red;
+$navbar-light-hover-color: red;
+$navbar-light-active-color: red;
+
+$btn-hover-bg-shade-amount: 100%;
+
+
 
 // Import all (without functions)
 @import "../../node_modules/bootstrap/scss/bootstrap";

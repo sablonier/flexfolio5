@@ -30,7 +30,7 @@
             {# Locales #}
             {% if locales()|length > 1 %}
                 {% for locale in locales() %}
-                    <a class="btn btn-light btn-sm" href="{{ locale.link }}">{{ locale.code|upper }}</a>
+                    <a class="btn btn-outline-dark btn-sm" href="{{ locale.link }}">{{ locale.code|upper }}</a>
                 {% endfor %}
             {% endif %}
             {# Menu button #}
