@@ -26,6 +26,18 @@
                     <a class="nav-link d-none d-lg-inline" href="{{ item|link }}">{{ item.title }}</a>
                 {% endfor %}
             </div>
+            {% if settings.socialmedia %}
+            {% for item in settings.socialmedia %}
+            <a href="{{item.links}}">
+                {% if item.symbol %}
+                    <div class="nav-link"><i class="{{ item.symbolcode }}" aria-hidden="true"></i></div>
+                {% else %}
+                    <div class="nav-link">{{item.title}}</div>
+                {% endif %}
+            </a>
+            {% endfor %}
+            {% endif %}
+
             <div class="align-content-end"> 
             {# Locales #}
             {% if locales()|length > 1 %}

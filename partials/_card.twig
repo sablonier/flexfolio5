@@ -13,7 +13,7 @@
         {% endif %}
         </div>
         {% if settings.showtitleindex == true && settings.showtitlepages == true %}
-        <div class="card-text my-2 {% if card.previewbackground != 'rgba(255,255,255,1.0' && card.previewbackground != '' %}px-2{% endif %}">
+        <div class="card-text my-2">
             {{ card.previewtext }}
             <a href="{{ card|link }}">{{ card.title }}</a>
         </div>
