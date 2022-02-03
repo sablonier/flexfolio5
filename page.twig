@@ -56,7 +56,11 @@
                         {# image #}
                         {# ----- #}
                         <div class="card py-1">
-                            {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : record.image, 'alt' : record.image.alt } %}
+                            {% include('partials/_resimage_50vw_100vw.twig') with { 
+                                'resimage' : record.image, 
+                                'alt' : record.image.alt, 
+                                'link' : record.imagelink
+                            } %}
                         </div>
                     </div>
                 </div>
