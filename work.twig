@@ -19,27 +19,26 @@
                     <div class="card-block">
                         {# image, video, document #}
                         {# ----- #}
-                        {% if record.gallery != "" %}
+                        {# if record.gallery.imagelelement != "" #}
                             {% for item in record.gallery %}
-                                {% if item.imgimage.file != "" %}
+                                {% if item.imgimage.filename != "" %}
                                     <div class="card">
-                                        {% set resimage = item.imgimage.file %}
-                                        {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
-                                        <div class="card-text small">
+                                        {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : item.imgimage, 'alt' : item.imgimage.alt } %}
+                                        <div class="card-text small py-1">
                                             {{ item.imgcaption }}
                                         </div>
                                     </div>
-                                {% elseif item.vidvideo != "" %}
+                                {% elseif item.vidvideo.filename != "" %}
                                 <div class="card">
                                     <video width="100%" controls src="/files/{{ item.vidvideo }}">
                                         Sorry, your browser doesn't support embedded videos, you can <a href="{{ item.vidvideo }}">download it</a>
                                         and watch it with your favorite video player.
                                     </video>
-                                    <div class="card-text small">
+                                    <div class="card-text small py-1">
                                         {{ item.vidcaption }}
                                     </div>
                                 </div>
-                                {% elseif item.docfile != "" %}
+                                {% elseif item.docfile.filename != "" %}
                                     {% if item.docpreview != "" %}
                                         <div class="card" >
                                         {% set resimage = item.docpreview.file %}
@@ -53,13 +52,13 @@
                                             <span class="icon-down-circled">&nbsp;{{ "Download"}}</span>
                                         </div>
                                     </a>
-                                    <div class="card-text small">
+                                    <div class="card-text small py-1">
                                         {{ item.doccaption }}
                                     </div>
-                                    </div>
+                                    </div>#}
                                 {% endif %}
                             {% endfor %}
-                        {% endif %}
+                        {# endif #}
                     </div>
                 </div>
             </div>
