@@ -47,26 +47,54 @@
     {% else %}
     <div class="container">
     {% endif %}
-        <div class="row">
-                {# get columns #}
-                {% if settings.colsxl == 4 %}
-                        {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-3' %}
-                    {% elseif settings.colsxl == 3 %}
-                        {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-4' %}
-                    {% elseif settings.colsxl == 2 %}
-                        {% set colclass = 'col-sm-12 col-md-6 col-lg-6 col-xl-6' %}
-                {% endif %}
-                
-                {# push rows in columns #}
-                {% for i in 0..columns-1 %}
-                    <div id="column-{{i}}" class="{{colclass}}">
-                    {% for card in cards %}
-                        {% if pattern[i] is defined && card.id in pattern[i] %}
-                            {% include 'partials/_card.twig' with { 'settings' : settings } %}
-                        {% endif %}
-                    {% endfor %}
+        <div class="row flex-md-row-reverse">
+            {# wide row with page content #}
+            {# -------------------------------- #}
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="card">
+                    <div class="card-block">
+                        {# image #}
+                        {# ----- #}
+                        <div class="card py-1">
+                            {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : record.image, 'alt' : record.image.alt } %}
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    {# text #}
+                    {# ---- #}
+                    <div class="card">
+                        <div class="card-block">
+                            {# title #}
+                            {# ----- #}
+                            <h4 class="card-title"> {{ record.title }}</h4>
+                            <div class="card-text">{{ record.body }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {# get columns #}
+            {% if settings.colsxl == 4 %}
+                    {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-3' %}
+                {% elseif settings.colsxl == 3 %}
+                    {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-4' %}
+                {% elseif settings.colsxl == 2 %}
+                    {% set colclass = 'col-sm-12 col-md-6 col-lg-6 col-xl-6' %}
+            {% endif %}
+            
+            {# push rows in columns #}
+            {% for i in 0..columns-1 %}
+                <div id="column-{{i}}" class="{{colclass}}">
+                {% for card in cards %}
+                    {% if pattern[i] is defined && card.id in pattern[i] %}
+                        {% include 'partials/_card.twig' with { 'settings' : settings } %}
+                    {% endif %}
                 {% endfor %}
+                </div>
+            {% endfor %}
         </div> 
     </div>
 
