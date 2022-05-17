@@ -21,14 +21,15 @@
                         {# ----- #}
                         {# if record.gallery.imagelelement != "" #}
                             {% for item in record.gallery %}
-                                {% if item.imgimage.filename != "" %}
+                                {% if item.imgimage.path != "" %}
                                     <div class="card">
-                                        {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : item.imgimage, 'alt' : item.imgimage.alt } %}
+                                        {% set resimage = item.imgimage %}
+                                        {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
                                         <div class="card-text small py-1">
                                             {{ item.imgcaption }}
                                         </div>
                                     </div>
-                                {% elseif item.vidvideo.filename != "" %}
+                                {% elseif item.vidvideo.path != "" %}
                                 <div class="card">
                                     <video width="100%" controls src="/files/{{ item.vidvideo }}">
                                         Sorry, your browser doesn't support embedded videos, you can <a href="{{ item.vidvideo }}">download it</a>
@@ -38,7 +39,7 @@
                                         {{ item.vidcaption }}
                                     </div>
                                 </div>
-                                {% elseif item.docfile.filename != "" %}
+                                {% elseif item.docfile.path != "" %}
                                     {% if item.docpreview != "" %}
                                         <div class="card" >
                                         {% set resimage = item.docpreview.file %}
