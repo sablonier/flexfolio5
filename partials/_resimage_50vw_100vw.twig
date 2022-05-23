@@ -7,7 +7,7 @@
         <a href="{{ link }}">
     {% endif %}
     {% if metadata.type == "gif" %}
-        <img loading="lazy" src="{{ metadata.location }}/{{ metadata.path }}/{{ metadata.filename }}" alt="{{ resimage.alt }}" width="100%" height="100%">
+        <img loading="lazy" src="/files/{{ metadata.path }}/{{ metadata.filename }}" alt="{{ resimage.alt }}" width="{{ metadata.width }}" height="{{ metadata.height }}">
     {% else %}
         <img loading="lazy" alt="{{ resimage.alt }}" srcset="
             {%for size in sizes %}
