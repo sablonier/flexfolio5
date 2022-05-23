@@ -11,7 +11,7 @@
   "scripts": {
     "watch": "parcel watch --no-content-hash --no-source-maps --dist-dir dist",
     "build": "parcel build --no-content-hash --no-source-maps --dist-dir dist --no-cache && cp -R ./src/favicon ./dist/favicon && cp ./src/css/custom.css ./dist/css/custom.css"
-  }, 
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",

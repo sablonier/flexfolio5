@@ -75,20 +75,35 @@
                             <h4 class="card-title"> {{ record.title }}</h4>
                             <div class="card-text">{{ record.description }}</div>
                             {# show other records with same relation #}
-                            {# --------------------------------- #}
-                            <div style="padding-top: 0.5rem;"></div>
-                            {# set rels = record|related() %}
-                            {% for rel in rels %}
-                            {% if loop.first %}
-                                    <h6 style="border-bottom: 1px solid black;">{{ record.related()[0].title }}</h6>
+                            {# ------------------------------------- #}
+                            <div style="padding-top: 6rem;"></div>
+                            {% set rels = record|related() %}
+                            {% if rels != null %}
+                                {% setcontent relatedworks = 'works' %}
+                                <p>Mehr Arbeiten:</p>
+                                <div class="row">
+                                {% for rel in rels %}
+                                
+                                    {% for relwork in relatedworks %}
+                                        {% if relwork.id != record.id %}
+                                                
+                                                    <div class="col-3">
+                                                        {# image #}
+                                                        {# ----- #}
+                                                        <div class="card py-1" style="opacity: 0.5">
+                                                            {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 
+                                                                'resimage' : relwork.previewimage, 
+                                                                'alt' : relwork.previewtext, 
+                                                                'link' : relwork|link
+                                                            } %}
+                                                        </div>
+                                                    </div>
+                                                
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                                </div>
                             {% endif %}
-                            {% if rel.related() == card.related() %}
-                            <h4 class="card-title related {%  if record.id == rel.id %}current{% endif %}">
-                                    <a href="{{ rel.link }}">
-                                    {{ rel.title }}</a>
-                            </h4>
-                            {% endif %}
-                            {% endfor #}
                         </div>
                     </div>
                 </div>
