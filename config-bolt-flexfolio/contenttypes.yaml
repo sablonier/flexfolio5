@@ -59,7 +59,7 @@ settings:
         font:
             label: Schriftart
             type: select
-            values: [ publicsans, rubik ]
+            values: [ publicsans, rubik, brygada ]
             default: 'publicsans'
             group: Schrift
         fontsize:

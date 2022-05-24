@@ -23,6 +23,11 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@fontsource/brygada-1918@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/brygada-1918/-/brygada-1918-4.5.8.tgz#8195f5ce7203d799aac01bf6c251f2ed5a576110"
+  integrity sha512-7YBUCLUx2RnQVsgYDKwAOWKYeB9Fr93T8AUPC/5BHh/drNhmwj0g4kgrIttcOz65dmpbWFMq2oei1mbrVuwEWQ==
+
 "@fontsource/public-sans@^4.5.0":
   version "4.5.8"
   resolved "https://registry.yarnpkg.com/@fontsource/public-sans/-/public-sans-4.5.8.tgz#bd6492e9339f3320ef5f356d365061039833c3af"

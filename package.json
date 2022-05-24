@@ -21,6 +21,7 @@
     "sass": "^1.46.0"
   },
   "dependencies": {
+    "@fontsource/brygada-1918": "^4.5.8",
     "@fontsource/public-sans": "^4.5.0",
     "@fontsource/rubik": "^4.5.0",
     "@popperjs/core": "^2.11.2",
