@@ -325,7 +325,7 @@ works:
                             localize: true
         template:
             type: templateselect
-            filter: 'work*.twig'
+            filter: '*.twig'
             default: 'work.twig' 
             group: template
     relations:
