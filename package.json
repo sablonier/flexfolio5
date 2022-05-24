@@ -6,6 +6,7 @@
     "src/css/flexfolio.scss",
     "src/css/fonts/rubik.scss",
     "src/css/fonts/publicsans.scss",
+    "src/css/fonts/brygada.scss",
     "src/js/flexfolio.js"
   ],
   "scripts": {

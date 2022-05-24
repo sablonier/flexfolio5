@@ -36,6 +36,9 @@
     {% if settings.font == "rubik" %}
       {% set fontname = "RubikVariable" %}
     {% endif %}
+    {% if settings.font == "brygada" %}
+      {% set fontname = "Brygada 1918Variable" %}
+    {% endif %}
     <style>
       body {
         font-family: '{{ fontname }}';
