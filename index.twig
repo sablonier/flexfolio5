@@ -26,6 +26,7 @@
     {% endif %}
 
     {% set pattern = [] %}
+    {% set postpattern = [] %}
     {% set ids = [] %}
 
     {% for card in cards %}
@@ -36,13 +37,25 @@
     {% set r1 = cards|length % columns %} {# remaining cards #}
 
     {% for i in 0..columns-1 %}
-        {% if r1 > 0 && ids|length >= 4 %}
+        {% if ids[i+columns] is defined %}
             {% set pattern = pattern|merge([[ids[i], ids[i+columns]]]) %}
-            {% set r1 = r1-1 %}
-        {% elseif ids|length > i %}
-            {% set pattern = pattern|merge([[ids[i]]]) %}
+        {% else %}
+            {# also for cards < columns #}
+            {% if ids[i] is defined %}
+                {% set pattern = pattern|merge([[ids[i]]]) %}
+            {% endif %}
         {% endif %}
     {% endfor %}
+
+    {% for pat in pattern %}
+        {% if r1 > 0 %}
+            {% set pat = pat|merge([ids[ids|length-r1]]) %}
+            {% set r1 = r1-1 %}
+        {% endif %}
+        {% set postpattern = postpattern|merge([pat]) %}
+    {% endfor %}
+
+    {% set pattern = postpattern %}
 
     {# container #}
     {# --------- #}
@@ -54,11 +67,13 @@
         <div class="row">
                 {# get columns #}
                 {% if settings.colsxl == 4 %}
-                        {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-3' %}
-                    {% elseif settings.colsxl == 3 %}
-                        {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-4' %}
-                    {% elseif settings.colsxl == 2 %}
-                        {% set colclass = 'col-sm-12 col-md-6 col-lg-6 col-xl-6' %}
+                    {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-3' %}
+                {% elseif settings.colsxl == 3 %}
+                    {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-4' %}
+                {% elseif settings.colsxl == 2 %}
+                    {% set colclass = 'col-sm-12 col-md-6 col-lg-6 col-xl-6' %}
+                {% else %}
+                    {% set colclass = 'col-sm-12 col-md-6 col-lg-4 col-xl-3' %}
                 {% endif %}
                 
                 {# push rows in columns #}
