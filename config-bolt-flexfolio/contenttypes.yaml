@@ -159,7 +159,6 @@ settings:
     viewless: true
     singleton: true
     default_status: published
-    sort: -id
     icon_many: "fa:cogs"
     icon_one: "fa:cog"
 
@@ -333,7 +332,6 @@ works:
             multiple: false
             required: false
             label: Wähle eine Seite
-            order: -id
     default_status: published
     record_template: work*.twig
     records_per_page: 10
