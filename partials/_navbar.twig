@@ -40,7 +40,7 @@
 
             <div class="align-content-end"> 
             {# Locales #}
-            {% if locales()|length > 1 %}
+            {% if locales()|length > 1 && settings.languageselector %}
                 {% for locale in locales() %}
                     <a class="btn btn-outline-dark btn-sm" href="{{ locale.link }}">{{ locale.code|upper }}</a>
                 {% endfor %}
