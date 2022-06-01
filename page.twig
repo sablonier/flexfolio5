@@ -11,6 +11,7 @@
     {# ---------------- #}
     {% set relatedrecords = record|related() %}
     {% set cards = relatedrecords|sort|reverse %}
+
     
     {# getting the magic with rows and columns            #}
     {# i.e. 10 entries should give = 3/3/2/2 not 3/3/3/1  #}
@@ -22,36 +23,45 @@
     {% endif %}
 
     {% set pattern = [] %}
-    {% set postpattern = [] %}
+    {# set postpattern = [] #}
     {% set ids = [] %}
+    {% set column0, column1, column2, column3 = [],[],[],[] %}
 
     {% for card in cards %}
         {% set ids = ids|merge([card.id]) %}
     {% endfor %}
 
-    {% set l = cards|length %} {# total cards #}
-    {% set r1 = cards|length % columns %} {# remaining cards #}
+    {% set maxrange = ids|length+3 %}
 
-    {% for i in 0..columns-1 %}
-        {% if ids[i+columns] is defined %}
-            {% set pattern = pattern|merge([[ids[i], ids[i+columns]]]) %}
-        {% else %}
-            {# also for cards < columns #}
-            {% if ids[i] is defined %}
-                {% set pattern = pattern|merge([[ids[i]]]) %}
-            {% endif %}
+    {% if ids|length < columns %}
+        {% set columns = ids|length %}
+    {% endif %}    
+
+    {% for id in range(0,maxrange,columns) %}
+        {% if ids[id] is defined %}
+            {% set column0 = column0|merge([ids[id]]) %}
         {% endif %}
     {% endfor %}
 
-    {% for pat in pattern %}
-        {% if r1 > 0 %}
-            {% set pat = pat|merge([ids[ids|length-r1]]) %}
-            {% set r1 = r1-1 %}
+    {% for id in range(1,maxrange,columns) %}
+        {% if ids[id] is defined %}
+            {% set column1 = column1|merge([ids[id]]) %}
         {% endif %}
-        {% set postpattern = postpattern|merge([pat]) %}
     {% endfor %}
 
-    {% set pattern = postpattern %}
+    {% for id in range(2,maxrange,columns) %}
+        {% if ids[id] is defined %}
+            {% set column2 = column2|merge([ids[id]]) %}
+        {% endif %}
+    {% endfor %}
+
+    {% for id in range(3,maxrange,columns) %}
+        {% if ids[id] is defined %}
+            {% set column3 = column3|merge([ids[id]]) %}
+        {% endif %}
+    {% endfor %}
+
+    {% set pattern = [column0,column1,column2,column3] %}
 
     {# container #}
     {# --------- #}
