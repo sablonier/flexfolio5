@@ -1,0 +1,144 @@
+{# fetching settings #}
+{# ----------------- #}
+{% setcontent settings = 'settings' limit 1 returnsingle %}
+
+{% include 'partials/_header.twig' with { 'settings' : settings } %}
+    <body>
+{% include 'partials/_navbar.twig' with { 'settings' : settings } %}
+    {% set ids = [] %}
+    {% if settings.layoutcontainer == 'fluid' %}
+    <div class="container-fluid">
+    {% else %}
+    <div class="container">
+    {% endif %}
+        {# row reverse would be                  #}
+        {# <div class="row flex-md-row-reverse"> #}
+        <div class="row">
+            {# first wide column with record content #}
+            {# ------------------------------------- #}
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div id="carouselFade" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-inner">
+                        <div class="card">
+                            <div class="card-block">
+                                {# image, video, document #}
+                                {# ----- #}
+                                {# if record.gallery.imagelelement != "" #}
+                                {% for item in record.gallery %}
+                                    {% if item.imgimage != "" %}
+                                        {% if loop.first %}
+                                            <div class="card carousel-item active">
+                                        {% else %}
+                                            <div class="card carousel-item">
+                                        {% endif %}
+                                            {% set resimage = item.imgimage %}
+                                            {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
+                                            <div class="card-text small py-1">
+                                                {{ item.imgcaption }}
+                                            </div>
+                                        </div>
+                                    {% elseif item.vidvideo != "" %}
+                                        {% if loop.first %}
+                                            <div class="card carousel-item active">
+                                        {% else %}
+                                            <div class="card carousel-item">
+                                        {% endif %}
+                                        <video width="100%" controls src="{{ item.vidvideo.path }}">
+                                            Sorry, your browser doesn't support embedded videos, you can <a href="{{ item.vidvideo.path }}">download it</a>
+                                            and watch it with your favorite video player.
+                                        </video>
+                                        <div class="card-text small py-1">
+                                            {{ item.vidcaption }}
+                                        </div>
+                                    </div>
+                                    {% elseif item.docfile != "" %}
+                                        {% if item.docpreview != "" %}
+                                            {% if loop.first %}
+                                                <div class="card carousel-item active">
+                                            {% else %}
+                                                <div class="card carousel-item">
+                                            {% endif %}
+                                            {% set resimage = item.docpreview.file %}
+                                            {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
+                                        {% else %}
+                                            {% if loop.first %}
+                                                <div class="card carousel-item active">
+                                            {% else %}
+                                                <div class="card carousel-item">
+                                            {% endif %}
+                                            <img src="/theme/flexfolio/images/missing_preview.png" width="100%" alt="No preview.">
+                                        {% endif %}
+                                        <a href="/files/{{ item.docfile }}">
+                                            <div class="carousel-item-overlay">
+                                                <span class="icon-down-circled">&nbsp;{{ "Download"}}</span>
+                                            </div>
+                                        </a>
+                                        <div class="card-text small py-1">
+                                            {{ item.doccaption }}
+                                        </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselFade" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            {# second column with related stuff if available #}
+            {# --------------------------------------------- #}
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    {# text #}
+                    {# ---- #}
+                    <div class="card">
+                        <div class="card-block">
+                            {# title #}
+                            {# ----- #}
+                            <h4 class="card-title"> {{ record.title }}</h4>
+                            <div class="card-text">{{ record.description }}</div>
+                            {# show other records with same relation #}
+                            {# ------------------------------------- #}
+                            <div style="padding-top: 1rem;"></div>
+                            {% set rels = record|related() %}
+                            {% if rels != null %}
+                                {% setcontent relatedworks = 'works' %}
+                                <div class="row">
+                                {% for rel in rels %}
+                                    {% if loop.first %}
+                                        <div class="col-12">
+                                            {{ rel.title }}:
+                                        </div>
+                                    {% endif %}
+                                    {% for relwork in relatedworks %}
+                                        {% if relwork.id != record.id %}
+                                                
+                                                    <div class="col-3">
+                                                        {# image #}
+                                                        {# ----- #}
+                                                        <div class="card py-1" style="opacity: 0.5">
+                                                            {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 
+                                                                'resimage' : relwork.previewimage, 
+                                                                'alt' : relwork.previewtext, 
+                                                                'link' : relwork|link
+                                                            } %}
+                                                        </div>
+                                                    </div>
+                                                
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% include 'partials/_footer.twig' with { 'settings' : settings } %}
