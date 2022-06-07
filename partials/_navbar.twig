@@ -23,19 +23,19 @@
             <div class="navbar-nav me-auto">
                 {% setcontent pages = 'pages' where { displaymenu: true } %}
                 {% for item in pages %}
-                    <a class="nav-link d-none d-lg-inline" href="{{ item|link }}">{{ item.title }}</a>
+                    <a class="nav-link d-none d-lg-inline" {% if record|link == item|link && item|link != '/' %}style="text-decoration: underline"{% endif %} href="{{ item|link }}">{{ item.title }}</a>
                 {% endfor %}
             </div>
             {% if settings.socialmedia %}
-            {% for item in settings.socialmedia %}
-            <a href="{{item.links}}">
-                {% if item.symbol %}
-                    <div class="nav-link"><i class="{{ item.symbolcode }}" aria-hidden="true"></i></div>
-                {% else %}
-                    <div class="nav-link">{{item.title}}</div>
-                {% endif %}
-            </a>
-            {% endfor %}
+                {% for item in settings.socialmedia %}
+                <a href="{{item.links}}">
+                    {% if item.symbol %}
+                        <div class="nav-link"><i class="{{ item.symbolcode }}" aria-hidden="true"></i></div>
+                    {% else %}
+                        <div class="nav-link">{{item.title}}</div>
+                    {% endif %}
+                </a>
+                {% endfor %}
             {% endif %}
 
             <div class="align-content-end"> 
@@ -54,8 +54,10 @@
     </nav>
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="menu">
-        <div class="offcanvas-header">
-            <h5 id="menu">All mine</h5>
+        <div class="offcanvas-header align-content-start">
+            <span style="font-weight: 700">
+                {{ settings.logotext }}
+            </span>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">

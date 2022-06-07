@@ -15,7 +15,7 @@
         {% if settings.showtitleindex == true && settings.showtitlepages == true %}
         <div class="card-text my-2">
             {{ card.previewtext }}
-            <a href="{{ card|link }}">{{ card.title }}</a>
+            <a href="{{ card|link }}" style="text-decoration: none">{{ card.title }}</a>
         </div>
         {% endif %}
     </div>
