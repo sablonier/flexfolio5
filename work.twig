@@ -7,9 +7,9 @@
 {% include 'partials/_navbar.twig' with { 'settings' : settings } %}
     {% set ids = [] %}
     {% if settings.layoutcontainer == 'fluid' %}
-    <div class="container-fluid">
+        <div class="container-fluid">
     {% else %}
-    <div class="container">
+        <div class="container">
     {% endif %}
         {# row reverse would be                  #}
         {# <div class="row flex-md-row-reverse"> #}
