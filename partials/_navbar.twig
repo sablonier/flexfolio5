@@ -22,8 +22,13 @@
             </div>
             <div class="navbar-nav me-auto">
                 {% setcontent pages = 'pages' where { displaymenu: true } %}
+                {% set relatedpage = record|related() %}
                 {% for item in pages %}
-                    <a class="nav-link d-none d-lg-inline" {% if record|link == item|link && item|link != '/' %}style="text-decoration: underline"{% endif %} href="{{ item|link }}">{{ item.title }}</a>
+                    {% if relatedpage %}
+                        <a class="nav-link d-none d-lg-inline" {% if record|link == item|link && item|link != '/' || relatedpage[0].title == item.title %}style="text-decoration: underline"{% endif %} href="{{ item|link }}">{{ item.title }}</a>
+                    {% else %}
+                        <a class="nav-link d-none d-lg-inline" {% if record|link == item|link && item|link != '/' %}style="text-decoration: underline"{% endif %} href="{{ item|link }}">{{ item.title }}</a>
+                    {% endif %}
                 {% endfor %}
             </div>
             {% if settings.socialmedia %}

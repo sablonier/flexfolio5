@@ -16,6 +16,12 @@
         <div class="row">
             {# first wide column with record content #}
             {# ------------------------------------- #}
+            
+            {# work title #}
+            {# ---------- #}
+            <div class="col-12">
+                <h4 class="card-title">{{ record.title }}</h4>
+            </div>
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <div class="card">
                     <div class="card-block">
@@ -72,9 +78,8 @@
                     {# ---- #}
                     <div class="card">
                         <div class="card-block">
-                            {# title #}
-                            {# ----- #}
-                            <h4 class="card-title"> {{ record.title }}</h4>
+                            {# work description #}
+                            {# ---------------- #}
                             <div class="card-text">{{ record.description }}</div>
                             {# show other records with same relation #}
                             {# ------------------------------------- #}
