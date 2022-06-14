@@ -189,12 +189,10 @@ pages:
             type: slug
             uses: title
             group: inhalt
-            localize: true
         image:
             label: Bild
             type: image
             group: inhalt
-            localize: true
         imagelink:
             label: Bild Link
             type: text
@@ -236,7 +234,6 @@ works:
             label: Link
             type: slug
             uses: title
-            localize: true
         description:
             label: Beschreibung
             type: html
@@ -251,8 +248,8 @@ works:
         previewtext:
             label: Vorschau Text
             type: html
-            localize: true
             group: vorschau
+            localize: true
         previewbackground:
             label: Vorschau Hintergrundfarbe
             type: text
@@ -263,7 +260,6 @@ works:
             type: collection
             group: galerie
             collapsible: true
-            localize: true
             fields:
                 imageelement:
                     type: set
