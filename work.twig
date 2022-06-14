@@ -84,33 +84,33 @@
                             {# show other records with same relation #}
                             {# ------------------------------------- #}
                             <div style="padding-top: 6rem;"></div>
-                            {% set rels = record|related() %}
-                            {% if rels != null %}
-                                {% setcontent relatedworks = 'works' %}
-                                <p>Mehr Arbeiten:</p>
-                                <div class="row">
-                                {% for rel in rels %}
-                                
+                                {% setcontent relatedworks = 'works' %}        
+                                {% set relation = record|related() %}
+                                {% if record|related() %}
+                                    <div class="row"> 
+                                    <div class="col-12">
+                                        <h6 style="border-top: 1px solid black"><a href="{{ relation[0]|link }}">{{ relation[0].title }}</a> ...</h6>
+                                    </div> 
                                     {% for relwork in relatedworks %}
-                                        {% if relwork.id != record.id %}
-                                                
-                                                    <div class="col-3">
-                                                        {# image #}
-                                                        {# ----- #}
-                                                        <div class="card py-1" style="opacity: 0.5">
-                                                            {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 
-                                                                'resimage' : relwork.previewimage, 
-                                                                'alt' : relwork.previewtext, 
-                                                                'link' : relwork|link
-                                                            } %}
-                                                        </div>
+                                        {% set rels = relwork|related() %}
+                                        {% if rels is defined && rels != [] && rels[0].id == relation[0].id %}
+                                            <div class="col-6 col-md-6 col-lg-3 col-xl-2">
+                                                {% if relwork.id != record.id %}
+                                                    {# image #}
+                                                    {# ----- #}
+                                                    <div class="card py-1">
+                                                        {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 
+                                                            'resimage' : relwork.previewimage, 
+                                                            'alt' : relwork.previewtext, 
+                                                            'link' : relwork|link
+                                                        } %}
                                                     </div>
-                                                
+                                                {% endif %}
+                                            </div>
                                         {% endif %}
                                     {% endfor %}
-                                {% endfor %}
-                                </div>
-                            {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
