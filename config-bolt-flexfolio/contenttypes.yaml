@@ -92,6 +92,12 @@ settings:
             type: checkbox
             default: true
             group: Layout
+        showrelated:
+            label: Ähnliche Inhalte auf Unterseite anzeigen
+            type: select
+            values: [ 'image', 'text', 'none' ]
+            default: 'image'
+            group: Layout
         colsxl:
             label: Anzahl Spalten Large/XL
             type: number

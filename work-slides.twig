@@ -29,7 +29,6 @@
                             <div class="card-block">
                                 {# image, video, document #}
                                 {# ----- #}
-                                {# if record.gallery.imagelelement != "" #}
                                 {% for item in record.gallery %}
                                     {% if item.imgimage != "" %}
                                         {% if loop.first %}
@@ -105,43 +104,51 @@
                     {# ---- #}
                     <div class="card">
                         <div class="card-block">
-                            {# title #}
-                            {# ----- #}
-                            <h4 class="card-title"> {{ record.title }}</h4>
+                            {# work description #}
+                            {# ---------------- #}
                             <div class="card-text">{{ record.description }}</div>
                             {# show other records with same relation #}
                             {# ------------------------------------- #}
-                            <div style="padding-top: 1rem;"></div>
-                            {% set rels = record|related() %}
-                            {% if rels != null %}
-                                {% setcontent relatedworks = 'works' %}
-                                <div class="row">
-                                {% for rel in rels %}
-                                    {% if loop.first %}
-                                        <div class="col-12">
-                                            {{ rel.title }}:
-                                        </div>
-                                    {% endif %}
+                            <div style="padding-top: 6rem;"></div>
+                                {% setcontent relatedworks = 'works' %}        
+                                {% set relation = record|related() %}
+                                {% if record|related() && settings.showrelated != 'none' %}
+                                    <div class="row"> 
+                                    <div class="col-12">
+                                        <h6 style="border-top: 1px solid black"><a href="{{ relation[0]|link }}">{{ relation[0].title }}</a></h6>
+                                    </div> 
                                     {% for relwork in relatedworks %}
-                                        {% if relwork.id != record.id %}
-                                                
-                                                    <div class="col-3">
-                                                        {# image #}
-                                                        {# ----- #}
-                                                        <div class="card py-1" style="opacity: 0.5">
-                                                            {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 
-                                                                'resimage' : relwork.previewimage, 
-                                                                'alt' : relwork.previewtext, 
-                                                                'link' : relwork|link
-                                                            } %}
-                                                        </div>
+                                        {% set rels = relwork|related() %}
+                                        {% if rels is defined && rels != [] && rels[0].id == relation[0].id %}
+                                            {% if settings.showrelated == "text" %}
+                                            {# titles #}
+                                            {# ------ #}
+                                            <div class="col-12">
+                                                {% if relwork.id != record.id %}
+                                                    <div class="card py-1">
+                                                        <a href="{{relwork|link}}">{{ relwork.title }}</a>
                                                     </div>
-                                                
+                                                {% endif %}
+                                            </div>
+                                            {% elseif settings.showrelated == "image" %}
+                                            {# images #}
+                                            {# ------ #}
+                                            <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+                                                {% if relwork.id != record.id %}
+                                                    <div class="card py-1">
+                                                        {% include('partials/_resimage_25vw_33vw_50vw_100vw.twig') with { 
+                                                            'resimage' : relwork.previewimage, 
+                                                            'alt' : relwork.previewtext, 
+                                                            'link' : relwork|link
+                                                        } %}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            {% endif %}
                                         {% endif %}
                                     {% endfor %}
-                                {% endfor %}
-                                </div>
-                            {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
