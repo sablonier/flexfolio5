@@ -1,0 +1,24 @@
+{# fetching settings #}
+{# ----------------- #}
+{% setcontent settings = 'settings' limit 1 returnsingle %}
+
+
+{% include 'partials/_header.twig' with { 'settings' : settings } %}
+    <body>
+{% include 'partials/_navbar.twig' with { 'settings' : settings } %}
+
+    {# container #}
+    {# --------- #}
+    {% if settings.layoutcontainer == 'fluid' %}
+        <div class="container-fluid">
+    {% else %}
+        <div class="container">
+    {% endif %}
+        <div class="row">
+            <div class="col-12">
+                <h4>Page not found.</h4>
+            </div>
+        </div> 
+    </div>
+
+{% include 'partials/_footer.twig' with { 'settings' : settings } %}

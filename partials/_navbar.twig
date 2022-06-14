@@ -22,14 +22,20 @@
             </div>
             <div class="navbar-nav me-auto">
                 {% setcontent pages = 'pages' where { displaymenu: true } %}
-                {% set relatedpage = record|related() %}
-                {% for item in pages %}
-                    {% if relatedpage %}
-                        <a class="nav-link d-none d-lg-inline" {% if record|link == item|link && item|link != '/' || relatedpage[0].title == item.title %}style="text-decoration: underline"{% endif %} href="{{ item|link }}">{{ item.title }}</a>
-                    {% else %}
-                        <a class="nav-link d-none d-lg-inline" {% if record|link == item|link && item|link != '/' %}style="text-decoration: underline"{% endif %} href="{{ item|link }}">{{ item.title }}</a>
-                    {% endif %}
-                {% endfor %}
+                {% if record is defined %} {# not helper like 404 etc. #}
+                    {% set relatedpage = record|related() %}
+                {% else %}
+                    {% set relatedpage = false %}
+                {% endif %}
+                    {% for item in pages %}
+                        {% if relatedpage %}
+                            <a class="nav-link d-none d-lg-inline" {% if record|link == item|link && item|link != '/' || relatedpage[0].title == item.title %}style="text-decoration: underline"{% endif %} href="{{ item|link }}">{{ item.title }}</a>
+                        {% elseif record is defined %}
+                            <a class="nav-link d-none d-lg-inline" {% if record|link == item|link && item|link != '/' %}style="text-decoration: underline"{% endif %} href="{{ item|link }}">{{ item.title }}</a>
+                        {% else %}
+                            <a class="nav-link d-none d-lg-inline" href="{{ item|link }}">{{ item.title }}</a>
+                        {% endif %}
+                    {% endfor %}
             </div>
             {% if settings.socialmedia %}
                 {% for item in settings.socialmedia %}
