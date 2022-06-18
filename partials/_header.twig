@@ -5,16 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Adding title for every page, default bolt style -->
-    <title>
-            {% if settings.logotext is defined %}
-              {{ settings.logotext|striptags }}
-            {% endif %}
-            {% if record.template is defined %} {# if helpers like 404 etc. #}
-              {% if '.twig' in record.template %}
-              | {{ record.title }}
-              {% endif %}
-            {% endif %}
-    </title>
+    <title>{% if settings.logotext is defined %}{{ settings.logotext|striptags }}{% endif %}{% if record.template is defined %}{% if '.twig' in record.template %} | {{ record.title }}{% endif %}{% endif %}</title>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/favicon/apple-touch-icon-180x180.png', 'theme') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dist/favicon/favicon-32x32.ico', 'theme') }}">
