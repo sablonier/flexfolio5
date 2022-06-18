@@ -10,6 +10,7 @@
         {{- ' | '  ~ record.title  -}}
       {%- endif -%}
     </title>
+    <meta name="description" content="{% if settings.metadescription is defined %}{{ settings.metadescription }}{% endif %}">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/favicon/apple-touch-icon-180x180.png', 'theme') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dist/favicon/favicon-32x32.ico', 'theme') }}">
