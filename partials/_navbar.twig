@@ -75,7 +75,7 @@
             <div class="navbar-nav">
                 {% setcontent pages = 'pages' where { displaymenu: true } %}
                 {% for item in pages %}
-                    <a class="nav-link" href="{{ item.link }}">{{ item.title }}</a>
+                    <a class="nav-link" href="{{ item|link }}">{{ item.title }}</a>
                 {% endfor %}
             </div>
         </div>

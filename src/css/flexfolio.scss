@@ -25,8 +25,11 @@ $navbar-light-active-color: red;
 
 $btn-hover-bg-shade-amount: 100%;
 
-$carousel-dark-control-icon-filter:  invert(0.66) grayscale(100);
-
+$carousel-control-color:             #f00;
+$carousel-control-width:             15%;
+$carousel-control-opacity:           0;
+$carousel-control-hover-opacity:     1;
+$carousel-control-transition:        opacity .15s ease;
 
 // Bootstrap takes 'bolder' for strong for unknown reason, flexfolio wants just bold (i.e. 700)
 strong {
