@@ -10,13 +10,13 @@
         {{- ' | '  ~ record.title  -}}
       {%- endif -%}
     </title>
-    <meta name="description" content="{% if record.description is defined && record.description != null %}{{ record.description|striptags }}{% elseif settings.metadescription is defined %}{{ settings.metadescription }}{% endif %}">
+    <meta name="description" content="{% if record.description is defined && record.description != null %}{{ record.description|striptags|excerpt(160) }}{% elseif settings.metadescription is defined %}{{ settings.metadescription }}{% endif %}">
     <!-- OG Meta Tags -->
     <meta property="og:title" content="{% if settings.logotext is defined %}{{ settings.logotext|striptags }}{% endif %}
       {%- if record|default and record.title -%}
         {{- ' | '  ~ record.title  -}}
       {%- endif -%}">
-    <meta property="og:description" content="{% if record.description is defined && record.description != null %}{{ record.description|striptags }}{% elseif settings.metadescription is defined %}{{ settings.metadescription }}{% endif %}">
+    <meta property="og:description" content="{% if record.description is defined && record.description != null %}{{ record.description|striptags|excerpt(160) }}{% elseif settings.metadescription is defined %}{{ settings.metadescription }}{% endif %}">
     <meta property="og:image" content="{% if record.previewimage is defined && record.previewimage != null %}{{ absolute_url(record.previewimage) }}{% endif %}">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/favicon/apple-touch-icon-180x180.png', 'theme') }}">

@@ -27,46 +27,45 @@
                     <div class="card-block">
                         {# image, video, document #}
                         {# ----- #}
-                            {% for item in record.gallery %}
-                                {% if item.imgimage != "" %}
-                                    <div class="card">
-                                        {% set resimage = item.imgimage %}
-                                        {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
-                                        <div class="card-text small py-1">
-                                            {{ item.imgcaption }}
-                                        </div>
-                                    </div>
-                                {% elseif item.vidvideo != "" %}
-                                <div class="card">
-                                    <video width="100%" controls src="{{ item.vidvideo.path }}">
-                                        Sorry, your browser doesn't support embedded videos, you can <a href="{{ item.vidvideo.path }}">download it</a>
-                                        and watch it with your favorite video player.
-                                    </video>
+                        {% for item in record.gallery %}
+                            {% if item.imgimage != "" %}
+                                <div class="card pb-3">
+                                    {% set resimage = item.imgimage %}
+                                    {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
                                     <div class="card-text small py-1">
-                                        {{ item.vidcaption }}
+                                        {{ item.imgcaption }}
                                     </div>
                                 </div>
-                                {% elseif item.docfile != "" %}
-                                    {% if item.docpreview != "" %}
-                                        <div class="card" >
-                                        {% set resimage = item.docpreview.file %}
-                                        {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
-                                    {% else %}
-                                        <div class="card" >
-                                        <img src="/theme/flexfolio/images/missing_preview.png" width="100%" alt="No preview.">
-                                    {% endif %}
-                                    <a href="/files/{{ item.docfile }}">
-                                        <div class="carousel-item-overlay">
-                                            <span class="icon-down-circled">&nbsp;{{ "Download"}}</span>
-                                        </div>
-                                    </a>
-                                    <div class="card-text small py-1">
-                                        {{ item.doccaption }}
-                                    </div>
-                                    </div>
+                            {% elseif item.vidvideo != "" %}
+                            <div class="card">
+                                <video width="100%" controls src="{{ item.vidvideo.path }}">
+                                    Sorry, your browser doesn't support embedded videos, you can <a href="{{ item.vidvideo.path }}">download it</a>
+                                    and watch it with your favorite video player.
+                                </video>
+                                <div class="card-text small py-1">
+                                    {{ item.vidcaption }}
+                                </div>
+                            </div>
+                            {% elseif item.docfile != "" %}
+                                {% if item.docpreview != "" %}
+                                    <div class="card" >
+                                    {% set resimage = item.docpreview.file %}
+                                    {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
+                                {% else %}
+                                    <div class="card" >
+                                    <img src="/theme/flexfolio/images/missing_preview.png" width="100%" alt="No preview.">
                                 {% endif %}
-                            {% endfor %}
-                        {# endif #}
+                                <a href="/files/{{ item.docfile }}">
+                                    <div class="carousel-item-overlay">
+                                        <span class="icon-down-circled">&nbsp;{{ "Download"}}</span>
+                                    </div>
+                                </a>
+                                <div class="card-text small py-1">
+                                    {{ item.doccaption }}
+                                </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
