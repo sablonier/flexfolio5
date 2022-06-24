@@ -13,7 +13,7 @@
     {% if settings.homesort == 'random' %}
         {% setcontent cards = 'works' random where condition limit settings.homecount %}
     {% else %}
-        {% setcontent cards = 'works' where condition orderby '-createdAt' limit settings.homecount %}
+        {% setcontent cards = 'works' where condition orderby '-publishedAt' limit settings.homecount %}
     {% endif %}
     
     {# getting the magic with rows and columns            #}
