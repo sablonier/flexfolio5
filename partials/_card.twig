@@ -1,4 +1,4 @@
-<div class="card" id="{{card.id}}">
+<div class="card pb-3" id="{{card.id}}">
     <div class="card-block" {% if card.previewbackground != 'rgba(255,255,255,1.0' %}style="background: {{ card.previewbackground }}"{% endif %}>
         <div>
         {% if card.previewimage.path != "" %}
@@ -12,11 +12,11 @@
             </a>
         {% endif %}
         </div>
-        {% if settings.showtitleindex == true && settings.showtitlepages == true %}
         <div class="card-text my-2">
-            {{ card.previewtext }}
-            <a href="{{ card|link }}" style="text-decoration: none">{{ card.title }}</a>
+            {% if settings.showtitleindex == true && settings.showtitlepages == true %}
+            	<a href="{{ card|link }}" style="text-decoration: none">{{ card.title }}
+            {% endif %}
+            <a href="{{ card|link }}" style="text-decoration: none">{{ card.previewtext }}</a>
         </div>
-        {% endif %}
     </div>
 </div>
