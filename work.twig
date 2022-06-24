@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                             {% elseif item.vidvideo != "" %}
-                            <div class="card">
+                            <div class="card pb-3">
                                 <video width="100%" controls src="{{ item.vidvideo.path }}">
                                     Sorry, your browser doesn't support embedded videos, you can <a href="{{ item.vidvideo.path }}">download it</a>
                                     and watch it with your favorite video player.
@@ -48,11 +48,11 @@
                             </div>
                             {% elseif item.docfile != "" %}
                                 {% if item.docpreview != "" %}
-                                    <div class="card" >
+                                    <div class="card pb-3" >
                                     {% set resimage = item.docpreview.file %}
                                     {% include('partials/_resimage_50vw_100vw.twig') with { 'resimage' : resimage } %}
                                 {% else %}
-                                    <div class="card" >
+                                    <div class="card pb-3" >
                                     <img src="/theme/flexfolio/images/missing_preview.png" width="100%" alt="No preview.">
                                 {% endif %}
                                 <a href="/files/{{ item.docfile }}">
